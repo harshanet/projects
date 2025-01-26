@@ -1,0 +1,213 @@
+[gd_scene load_steps=28 format=3 uid="uid://dd46jixxupeh7"]
+
+[ext_resource type="Script" path="res://end_screen.gd" id="1_0d0y6"]
+[ext_resource type="Texture2D" uid="uid://cxdwmmeynvk75" path="res://scenes/main/assets/backgrounds/Starfield 7 - 1024x1024.png" id="1_qc058"]
+[ext_resource type="Texture2D" uid="uid://biylsm3glbtot" path="res://assets/end_screen_assets/crewmates_win.png" id="2_hsonr"]
+[ext_resource type="Texture2D" uid="uid://bam8q7h5d8o64" path="res://assets/end_screen_assets/imposter_wins.png" id="3_76gks"]
+[ext_resource type="Texture2D" uid="uid://b773s4vtp7x8g" path="res://assets/end_screen_assets/game_over.png" id="3_ahx8i"]
+[ext_resource type="Texture2D" uid="uid://dnd2300prp62i" path="res://assets/end_screen_assets/false_icon.png" id="3_j7f50"]
+[ext_resource type="Texture2D" uid="uid://7wpmmbbwj70j" path="res://assets/end_screen_assets/you_win.png" id="4_05xws"]
+[ext_resource type="Texture2D" uid="uid://xnr0glf6bvae" path="res://assets/end_screen_assets/results_0.png" id="4_fjew4"]
+[ext_resource type="Texture2D" uid="uid://dp17e2rojiv3v" path="res://assets/end_screen_assets/results_1.png" id="5_dhvta"]
+[ext_resource type="Texture2D" uid="uid://csklfth1y67gh" path="res://assets/end_screen_assets/start_quiz.png" id="5_ux0oc"]
+[ext_resource type="Texture2D" uid="uid://fuyvyysfppo8" path="res://assets/end_screen_assets/results_2.png" id="6_12du3"]
+[ext_resource type="Texture2D" uid="uid://j0t4mvv7ny7x" path="res://assets/end_screen_assets/true_icon.png" id="7_pfbie"]
+[ext_resource type="Texture2D" uid="uid://dhkflgyrtua6r" path="res://assets/end_screen_assets/results_3.png" id="7_q47rd"]
+[ext_resource type="Texture2D" uid="uid://blihiiwdibw3w" path="res://assets/end_screen_assets/results_4.png" id="8_hhgms"]
+[ext_resource type="Texture2D" uid="uid://b7caf8qcjyd8d" path="res://assets/end_screen_assets/quiz_title.png" id="8_k340j"]
+[ext_resource type="Texture2D" uid="uid://d3lbw07uv0k5" path="res://assets/end_screen_assets/submit_answers.png" id="9_oqkar"]
+[ext_resource type="Texture2D" uid="uid://c1x5fwusd5qhx" path="res://assets/end_screen_assets/results_5.png" id="9_s5upw"]
+[ext_resource type="Texture2D" uid="uid://6w5ybbdh41s" path="res://assets/end_screen_assets/q1.png" id="9_ytvj7"]
+[ext_resource type="Texture2D" uid="uid://rmia45p5m7ce" path="res://assets/end_screen_assets/results_6.png" id="10_k08eu"]
+[ext_resource type="Texture2D" uid="uid://c268kqmvwxkbu" path="res://assets/end_screen_assets/q2.png" id="10_vje1m"]
+[ext_resource type="Texture2D" uid="uid://cug118jy0hxu1" path="res://assets/end_screen_assets/results_icon.png" id="10_xrw0l"]
+[ext_resource type="Texture2D" uid="uid://dhco74audrsr3" path="res://assets/end_screen_assets/q3.png" id="11_t3jjd"]
+[ext_resource type="Texture2D" uid="uid://cgmk00xignaps" path="res://assets/end_screen_assets/finish_icon.png" id="11_tnnih"]
+[ext_resource type="Texture2D" uid="uid://bq7msqk4561w2" path="res://assets/end_screen_assets/q4.png" id="12_8wsln"]
+[ext_resource type="Texture2D" uid="uid://cd3edpm4yb6vo" path="res://assets/end_screen_assets/q5.png" id="13_vp0g1"]
+[ext_resource type="Texture2D" uid="uid://dss54ixj5uger" path="res://assets/end_screen_assets/q6.png" id="14_4roql"]
+[ext_resource type="Texture2D" uid="uid://bvbng34a3jrtk" path="res://assets/end_screen_assets/credits_screen.png" id="18_yh4u7"]
+
+[node name="EndScreen" type="Node2D"]
+position = Vector2(27, -18)
+script = ExtResource("1_0d0y6")
+crewmates_win = ExtResource("2_hsonr")
+imposter_win = ExtResource("3_76gks")
+true_icon = ExtResource("7_pfbie")
+false_icon = ExtResource("3_j7f50")
+zero_of_six = ExtResource("4_fjew4")
+one_of_six = ExtResource("5_dhvta")
+two_of_six = ExtResource("6_12du3")
+three_of_six = ExtResource("7_q47rd")
+four_of_six = ExtResource("8_hhgms")
+five_of_six = ExtResource("9_s5upw")
+six_of_six = ExtResource("10_k08eu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_qc058")
+
+[node name="GameOver" type="Sprite2D" parent="."]
+position = Vector2(913, 207)
+scale = Vector2(10.5805, 10.8611)
+texture = ExtResource("3_ahx8i")
+
+[node name="YouWinLose" type="Sprite2D" parent="."]
+position = Vector2(940, 584)
+scale = Vector2(5.47458, 6.16667)
+texture = ExtResource("4_05xws")
+
+[node name="StartQuizButton" type="Button" parent="."]
+offset_left = 576.0
+offset_top = 816.0
+offset_right = 1322.0
+offset_bottom = 934.0
+icon = ExtResource("5_ux0oc")
+expand_icon = true
+
+[node name="QuizQuestions" type="Node2D" parent="."]
+visible = false
+position = Vector2(45, -98)
+
+[node name="Question1" type="Sprite2D" parent="QuizQuestions"]
+position = Vector2(232, 401)
+scale = Vector2(0.270358, 0.325521)
+texture = ExtResource("9_ytvj7")
+
+[node name="Question2" type="Sprite2D" parent="QuizQuestions"]
+position = Vector2(236, 638)
+scale = Vector2(0.275131, 0.329273)
+texture = ExtResource("10_vje1m")
+
+[node name="Question3" type="Sprite2D" parent="QuizQuestions"]
+position = Vector2(232.569, 894)
+scale = Vector2(0.270522, 0.366566)
+texture = ExtResource("11_t3jjd")
+
+[node name="Question4" type="Sprite2D" parent="QuizQuestions"]
+position = Vector2(1181, 401)
+scale = Vector2(0.27259, 0.336377)
+texture = ExtResource("12_8wsln")
+
+[node name="Question5" type="Sprite2D" parent="QuizQuestions"]
+position = Vector2(1190, 637)
+scale = Vector2(0.272276, 0.34566)
+texture = ExtResource("13_vp0g1")
+
+[node name="Question6" type="Sprite2D" parent="QuizQuestions"]
+position = Vector2(1193, 882)
+scale = Vector2(0.271305, 0.343798)
+texture = ExtResource("14_4roql")
+
+[node name="Answer1" type="Button" parent="QuizQuestions"]
+offset_left = 521.0
+offset_top = 353.0
+offset_right = 844.0
+offset_bottom = 450.0
+disabled = true
+icon = ExtResource("7_pfbie")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Answer2" type="Button" parent="QuizQuestions"]
+offset_left = 529.0
+offset_top = 606.0
+offset_right = 857.0
+offset_bottom = 675.0
+disabled = true
+icon = ExtResource("7_pfbie")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Answer3" type="Button" parent="QuizQuestions"]
+offset_left = 532.0
+offset_top = 858.0
+offset_right = 855.0
+offset_bottom = 931.0
+disabled = true
+icon = ExtResource("7_pfbie")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Answer4" type="Button" parent="QuizQuestions"]
+offset_left = 1473.0
+offset_top = 370.0
+offset_right = 1795.0
+offset_bottom = 431.0
+disabled = true
+icon = ExtResource("7_pfbie")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Answer5" type="Button" parent="QuizQuestions"]
+offset_left = 1496.0
+offset_top = 604.0
+offset_right = 1819.0
+offset_bottom = 672.0
+disabled = true
+icon = ExtResource("7_pfbie")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Answer6" type="Button" parent="QuizQuestions"]
+offset_left = 1496.0
+offset_top = 845.0
+offset_right = 1812.0
+offset_bottom = 918.0
+disabled = true
+icon = ExtResource("7_pfbie")
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuizTitle" type="Sprite2D" parent="QuizQuestions"]
+position = Vector2(923, 218)
+scale = Vector2(5.31356, 7.11111)
+texture = ExtResource("8_k340j")
+
+[node name="SubmitAnswersButton" type="Button" parent="."]
+visible = false
+offset_left = 625.0
+offset_top = 912.0
+offset_right = 1294.0
+offset_bottom = 1041.0
+disabled = true
+icon = ExtResource("9_oqkar")
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuizResults" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(950, 270.25)
+scale = Vector2(12.7203, 14.9167)
+texture = ExtResource("10_xrw0l")
+
+[node name="FinishButton" type="Button" parent="."]
+visible = false
+offset_left = 493.0
+offset_top = 625.0
+offset_right = 1420.0
+offset_bottom = 847.0
+icon = ExtResource("11_tnnih")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CreditsScreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(957.848, 542.441)
+scale = Vector2(1.04659, 1.05075)
+texture = ExtResource("18_yh4u7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(961, 540)
+
+[connection signal="pressed" from="StartQuizButton" to="." method="_on_start_quiz_button_pressed"]
+[connection signal="pressed" from="QuizQuestions/Answer1" to="." method="_on_answer_1_pressed"]
+[connection signal="pressed" from="QuizQuestions/Answer2" to="." method="_on_answer_2_pressed"]
+[connection signal="pressed" from="QuizQuestions/Answer3" to="." method="_on_answer_3_pressed"]
+[connection signal="pressed" from="QuizQuestions/Answer4" to="." method="_on_answer_4_pressed"]
+[connection signal="pressed" from="QuizQuestions/Answer5" to="." method="_on_answer_5_pressed"]
+[connection signal="pressed" from="QuizQuestions/Answer6" to="." method="_on_answer_6_pressed"]
+[connection signal="pressed" from="SubmitAnswersButton" to="." method="_on_submit_answers_button_pressed"]
+[connection signal="pressed" from="FinishButton" to="." method="_on_finish_button_pressed"]

@@ -1,0 +1,213 @@
+[gd_scene load_steps=24 format=3 uid="uid://dhy6rwr33vawp"]
+
+[ext_resource type="Script" path="res://multiplayer.gd" id="1_ict03"]
+[ext_resource type="Texture2D" uid="uid://cxdwmmeynvk75" path="res://scenes/main/assets/backgrounds/Starfield 7 - 1024x1024.png" id="2_hv6yq"]
+[ext_resource type="Texture2D" uid="uid://3u2w7n75pksl" path="res://scenes/main/assets/objects/host_button.png" id="3_csr1w"]
+[ext_resource type="Texture2D" uid="uid://dwo3qg2pb4y0j" path="res://scenes/main/assets/objects/space_buns_title.png" id="3_fmukp"]
+[ext_resource type="Texture2D" uid="uid://du6rwgu117io" path="res://entities/player/assets/animations/idle/(pixel)NEHA-sprite-neutral.png" id="4_glim4"]
+[ext_resource type="Texture2D" uid="uid://chxgbgcl03k7s" path="res://scenes/main/assets/objects/join_button.png" id="4_lkj4r"]
+[ext_resource type="Texture2D" uid="uid://bck5qyeatf8hy" path="res://scenes/main/assets/objects/start_button.png" id="5_0mo0f"]
+[ext_resource type="Texture2D" uid="uid://c3pcq5jb2b0lk" path="res://entities/player/assets/animations/injured/(pixel)RIO-sprite-neutral.png" id="5_epqdv"]
+[ext_resource type="Texture2D" uid="uid://cm8hsh3w02f5y" path="res://scenes/main/assets/tiles/PNG/robot_man_1.png" id="6_4iqrl"]
+[ext_resource type="Texture2D" uid="uid://cv8y7c8jj43bh" path="res://scenes/main/assets/tiles/PNG/robot_man_2.png" id="7_jkv7x"]
+[ext_resource type="Texture2D" uid="uid://dscpiygs0dhkc" path="res://scenes/main/assets/tiles/PNG/robot_man_3.png" id="8_kmvy7"]
+[ext_resource type="Texture2D" uid="uid://cwye726mso4x6" path="res://probing_satelite_task/assets/wship-2.png" id="10_5hldh"]
+[ext_resource type="Texture2D" uid="uid://ccv7x2iqkvsos" path="res://scenes/main/assets/objects/waiting_icon1.png" id="13_l7q24"]
+[ext_resource type="Texture2D" uid="uid://bd0yss0i6ure4" path="res://scenes/main/assets/objects/waiting_icon2.png" id="14_a0s2y"]
+[ext_resource type="Texture2D" uid="uid://c1lvy81lkkskc" path="res://scenes/main/assets/objects/waiting_icon3.png" id="15_qg887"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eq0pl"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": ExtResource("6_4iqrl")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_jkv7x")
+}, {
+"duration": 3.0,
+"texture": ExtResource("8_kmvy7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_jkv7x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_3fb23"]
+_data = {
+"points": PackedVector2Array(181.634, -529.765, -181.634, 529.765, 85, -161, 257.721, -529.774, -257.721, 529.774, 1738, 387, 266.968, -336.38, -266.968, 336.38, 159, 424, -235.451, -11.7725, 235.451, 11.7725, 520, 1021, -282.541, 55.4992, 282.541, -55.4992, 1296, 828, 26.9087, 15.1361, -26.9087, -15.1361, 1849, 1144)
+}
+point_count = 6
+
+[sub_resource type="GDScript" id="GDScript_1eicu"]
+
+[sub_resource type="Animation" id="Animation_egxmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_aym87"]
+resource_name = "space_ship_animation"
+length = 6.0
+
+[sub_resource type="Animation" id="Animation_gsthg"]
+resource_name = "spaceship_animation"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uiohs"]
+_data = {
+"RESET": SubResource("Animation_egxmt"),
+"space_ship_animation": SubResource("Animation_aym87"),
+"spaceship_animation": SubResource("Animation_gsthg")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h8o6c"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("13_l7q24")
+}, {
+"duration": 2.0,
+"texture": ExtResource("14_a0s2y")
+}, {
+"duration": 2.0,
+"texture": ExtResource("15_qg887")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Multiplayer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ict03")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(961.5, 541)
+scale = Vector2(1.87793, 1.05859)
+texture = ExtResource("2_hv6yq")
+
+[node name="Host" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 586.0
+offset_top = 436.0
+offset_right = 1358.0
+offset_bottom = 561.0
+icon = ExtResource("3_csr1w")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Join" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 577.0
+offset_top = 630.0
+offset_right = 1363.0
+offset_bottom = 757.0
+icon = ExtResource("4_lkj4r")
+icon_alignment = 1
+expand_icon = true
+
+[node name="StartGame" type="Button" parent="."]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 461.0
+offset_top = 467.0
+offset_right = 1506.0
+offset_bottom = 673.0
+disabled = true
+icon = ExtResource("5_0mo0f")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Title" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(989, 158)
+scale = Vector2(10.4333, 10.425)
+texture = ExtResource("3_fmukp")
+
+[node name="Spacebun" type="Sprite2D" parent="."]
+position = Vector2(209, 670)
+rotation = -0.314159
+scale = Vector2(1.80924, 1.78378)
+texture = ExtResource("4_glim4")
+
+[node name="Spacebun2" type="Sprite2D" parent="."]
+position = Vector2(1721, 648)
+rotation = 1.98095
+scale = Vector2(1.80924, 1.78378)
+texture = ExtResource("5_epqdv")
+
+[node name="RobotMan" type="AnimatedSprite2D" parent="."]
+position = Vector2(1517, 187)
+rotation = 1.22173
+scale = Vector2(3.1, 2.9)
+sprite_frames = SubResource("SpriteFrames_eq0pl")
+autoplay = "default"
+frame_progress = 0.582409
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-34, 25)
+curve = SubResource("Curve2D_3fb23")
+script = SubResource("GDScript_1eicu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(85, -161)
+rotation = 1.90109
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(1.16725, 0.527588)
+rotation = 1.49226
+scale = Vector2(0.7508, 0.874657)
+texture = ExtResource("10_5hldh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spaceship_animation"
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_uiohs")
+}
+
+[node name="WaitingIcon" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(979, 638)
+scale = Vector2(7.22333, 7.31875)
+sprite_frames = SubResource("SpriteFrames_h8o6c")
+autoplay = "default"
+frame_progress = 0.190281
+
+[connection signal="button_down" from="Host" to="." method="_on_host_button_down"]
+[connection signal="button_down" from="Join" to="." method="_on_join_button_down"]
+[connection signal="button_down" from="StartGame" to="." method="_on_start_game_button_down"]

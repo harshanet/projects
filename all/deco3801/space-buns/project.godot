@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Space Buns"
+run/main_scene="res://multiplayer.tscn"
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+run/canvas_textures/default_texture_filter=0
+
+[autoload]
+
+GameManager="*res://globals/game_manager.gd"
+Signals="*res://globals/signals.gd"
+UILayer="*res://globals/ui/ui.tscn"
+TaskManager="*res://tasks/taskmanager.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="Space Buns"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_3="Interactables"
+2d_physics/layer_5="Ladders"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
