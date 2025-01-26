@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://do5ws2euey4g0"]
+
+[ext_resource type="Script" path="res://scenes/shared/hazard_display.gd" id="1_587km"]
+
+[node name="HazardDisplay" type="VBoxContainer"]
+script = ExtResource("1_587km")

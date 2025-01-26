@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bf5g112e74osv"]
+
+[ext_resource type="Shader" path="res://scenes/shared/redaction.gdshader" id="1_l4xt8"]
+[ext_resource type="Texture2D" uid="uid://fhr7hdpxh3ew" path="res://scenes/shared/assets/SignalLost.png" id="2_fxa80"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_l4xt8")
+shader_parameter/scroll_speed = Vector2(3, 5)
+shader_parameter/static_intensity = 0.25
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex_scale = 0.57
+shader_parameter/albedo_tex = ExtResource("2_fxa80")

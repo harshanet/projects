@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bv01n0ph8e06w"]
+
+[node name="MinimapIcon" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0

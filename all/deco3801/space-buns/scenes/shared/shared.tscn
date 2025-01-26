@@ -1,0 +1,319 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfru8ui62u1sv"]
+
+[ext_resource type="Script" path="res://scenes/shared/shared.gd" id="1_fxysf"]
+[ext_resource type="Texture2D" uid="uid://d17d8t7tp212n" path="res://scenes/shared/assets/Frame 1.png" id="2_48b31"]
+[ext_resource type="Texture2D" uid="uid://bmi3c8jgdwu35" path="res://scenes/shared/assets/ui/BarWindow.png" id="3_nhdxb"]
+[ext_resource type="Texture2D" uid="uid://koc44cpihthr" path="res://scenes/shared/assets/ui/UI_Flat_Banner_01_Downward.png" id="4_jvktl"]
+[ext_resource type="PackedScene" uid="uid://6ud023nn14cv" path="res://scenes/shared/timed_progress.tscn" id="5_pc0qn"]
+[ext_resource type="Material" uid="uid://bf5g112e74osv" path="res://scenes/shared/assets/signal_lost_material.tres" id="6_1tnvr"]
+
+[sub_resource type="SystemFont" id="SystemFont_d7o4x"]
+font_names = PackedStringArray("Arial")
+font_weight = 900
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jntbn"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f7o8b"]
+
+[node name="Shared" type="Node2D"]
+script = ExtResource("1_fxysf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 160.0
+offset_bottom = 1080.0
+
+[node name="Minimap" type="Sprite2D" parent="."]
+position = Vector2(1040, 540)
+texture = ExtResource("2_48b31")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Labels" type="Node2D" parent="."]
+position = Vector2(160, 0)
+
+[node name="Infirmary" type="CenterContainer" parent="Labels"]
+offset_left = 328.0
+offset_top = 241.0
+offset_right = 1582.0
+offset_bottom = 276.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Infirmary"]
+layout_mode = 2
+columns = 6
+
+[node name="Observatory" type="CenterContainer" parent="Labels"]
+offset_left = 328.0
+offset_top = 343.0
+offset_right = 576.0
+offset_bottom = 378.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Observatory"]
+layout_mode = 2
+columns = 6
+
+[node name="Office" type="CenterContainer" parent="Labels"]
+offset_left = 598.0
+offset_top = 343.0
+offset_right = 875.0
+offset_bottom = 386.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Office"]
+layout_mode = 2
+columns = 6
+
+[node name="Untitled1" type="CenterContainer" parent="Labels"]
+offset_left = 897.0
+offset_top = 343.0
+offset_right = 1092.0
+offset_bottom = 384.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Untitled1"]
+layout_mode = 2
+columns = 6
+
+[node name="Dining" type="CenterContainer" parent="Labels"]
+offset_left = 1122.0
+offset_top = 343.0
+offset_right = 1312.0
+offset_bottom = 384.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Dining"]
+layout_mode = 2
+columns = 6
+
+[node name="Kitchen" type="CenterContainer" parent="Labels"]
+offset_left = 1334.0
+offset_top = 343.0
+offset_right = 1582.0
+offset_bottom = 384.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Kitchen"]
+layout_mode = 2
+columns = 6
+
+[node name="Manufacturing" type="CenterContainer" parent="Labels"]
+offset_left = 334.0
+offset_top = 446.0
+offset_right = 553.0
+offset_bottom = 489.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Manufacturing"]
+layout_mode = 2
+columns = 6
+
+[node name="FuelRoom" type="CenterContainer" parent="Labels"]
+offset_left = 598.0
+offset_top = 450.0
+offset_right = 875.0
+offset_bottom = 487.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/FuelRoom"]
+layout_mode = 2
+columns = 6
+
+[node name="Untitled2" type="CenterContainer" parent="Labels"]
+offset_left = 897.0
+offset_top = 450.0
+offset_right = 1039.0
+offset_bottom = 488.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Untitled2"]
+layout_mode = 2
+columns = 6
+
+[node name="LivingArea" type="CenterContainer" parent="Labels"]
+offset_left = 1062.0
+offset_top = 450.0
+offset_right = 1581.0
+offset_bottom = 488.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/LivingArea"]
+layout_mode = 2
+columns = 6
+
+[node name="Specimens" type="CenterContainer" parent="Labels"]
+offset_left = 328.0
+offset_top = 547.0
+offset_right = 576.0
+offset_bottom = 590.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Specimens"]
+layout_mode = 2
+columns = 6
+
+[node name="TechHQ" type="CenterContainer" parent="Labels"]
+offset_left = 598.0
+offset_top = 547.0
+offset_right = 875.0
+offset_bottom = 590.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/TechHQ"]
+layout_mode = 2
+columns = 6
+
+[node name="Untitled3" type="CenterContainer" parent="Labels"]
+offset_left = 897.0
+offset_top = 547.0
+offset_right = 1092.0
+offset_bottom = 590.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Untitled3"]
+layout_mode = 2
+columns = 6
+
+[node name="Warehouse" type="CenterContainer" parent="Labels"]
+offset_left = 1121.0
+offset_top = 547.0
+offset_right = 1582.0
+offset_bottom = 590.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Warehouse"]
+layout_mode = 2
+columns = 6
+
+[node name="Laboratory" type="CenterContainer" parent="Labels"]
+offset_left = 328.0
+offset_top = 649.0
+offset_right = 846.0
+offset_bottom = 692.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Laboratory"]
+layout_mode = 2
+columns = 6
+
+[node name="Untitled4" type="CenterContainer" parent="Labels"]
+offset_left = 897.0
+offset_top = 649.0
+offset_right = 1040.0
+offset_bottom = 692.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Untitled4"]
+layout_mode = 2
+columns = 6
+
+[node name="Greenhouse" type="CenterContainer" parent="Labels"]
+offset_left = 1061.0
+offset_top = 649.0
+offset_right = 1582.0
+offset_bottom = 692.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Greenhouse"]
+layout_mode = 2
+columns = 6
+
+[node name="Electrical" type="CenterContainer" parent="Labels"]
+offset_left = 328.0
+offset_top = 751.0
+offset_right = 875.0
+offset_bottom = 794.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Electrical"]
+layout_mode = 2
+columns = 6
+
+[node name="Admin1" type="CenterContainer" parent="Labels"]
+offset_left = 897.0
+offset_top = 751.0
+offset_right = 1225.0
+offset_bottom = 794.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Admin1"]
+layout_mode = 2
+columns = 6
+
+[node name="Admin2" type="CenterContainer" parent="Labels"]
+offset_left = 1254.0
+offset_top = 751.0
+offset_right = 1582.0
+offset_bottom = 794.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Admin2"]
+layout_mode = 2
+columns = 6
+
+[node name="Hangar1" type="CenterContainer" parent="Labels"]
+offset_left = 328.0
+offset_top = 854.0
+offset_right = 711.0
+offset_bottom = 897.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Hangar1"]
+layout_mode = 2
+columns = 6
+
+[node name="Hangar2" type="CenterContainer" parent="Labels"]
+offset_left = 740.0
+offset_top = 854.0
+offset_right = 1582.0
+offset_bottom = 897.0
+
+[node name="GridContainer" type="GridContainer" parent="Labels/Hangar2"]
+layout_mode = 2
+columns = 6
+
+[node name="Unpositioned" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tasks" type="Node2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="BarWindow" type="Sprite2D" parent="Tasks"]
+position = Vector2(242.938, 540)
+scale = Vector2(2.53258, 1.68218)
+texture = ExtResource("3_nhdxb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tasks/BarWindow"]
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.037
+anchor_right = 0.91
+anchor_bottom = 1.929
+offset_left = -93.972
+offset_top = -262.425
+offset_right = -94.08
+offset_bottom = -262.725
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TasksBanner" type="Sprite2D" parent="Tasks"]
+position = Vector2(241.25, 68)
+scale = Vector2(4.59896, 2.90625)
+texture = ExtResource("4_jvktl")
+
+[node name="TasksLabel" type="Label" parent="Tasks"]
+offset_left = 95.0
+offset_top = 45.0
+offset_right = 389.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_d7o4x")
+theme_override_font_sizes/font_size = 30
+text = "Tasks & Hazards"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapCover" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1133.5, 553.499)
+scale = Vector2(2.54883, 1.38476)
+texture = SubResource("ViewportTexture_jntbn")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_f7o8b")
+surface_material_override/0 = ExtResource("6_1tnvr")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.847, 0)
+
+[node name="TimedProgress" parent="." instance=ExtResource("5_pc0qn")]
+position = Vector2(750, 43)

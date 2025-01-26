@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://6ud023nn14cv"]
+
+[ext_resource type="Script" path="res://scenes/shared/timed_progress.gd" id="1_qqbl1"]
+[ext_resource type="Texture2D" uid="uid://b8y784ljc8hrr" path="res://scenes/shared/assets/ui/ship.tres" id="2_32eqe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv2fh"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.960784, 0.760784, 0.505882, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_civlo"]
+bg_color = Color(1, 0.337255, 0.337255, 1)
+border_color = Color(0.960784, 0.760784, 0.505882, 1)
+corner_detail = 1
+
+[sub_resource type="Gradient" id="Gradient_bwg8d"]
+colors = PackedColorArray(0.964706, 0.317647, 0.0156863, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1nyev"]
+gradient = SubResource("Gradient_bwg8d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vjyy3"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 50.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 309.86
+initial_velocity_max = 309.86
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 15.08
+color_ramp = SubResource("GradientTexture1D_1nyev")
+
+[sub_resource type="SystemFont" id="SystemFont_kiovx"]
+font_names = PackedStringArray("Monospace")
+font_italic = true
+
+[node name="TimedProgress" type="Node2D"]
+script = ExtResource("1_qqbl1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1200.0
+one_shot = true
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 740.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_uv2fh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_civlo")
+show_percentage = false
+
+[node name="Ship" type="Sprite2D" parent="."]
+position = Vector2(0, 30)
+rotation = 1.5708
+scale = Vector2(0.54663, 0.54663)
+texture = ExtResource("2_32eqe")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Ship"]
+position = Vector2(7.62939e-06, 163.063)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_vjyy3")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Ship"]
+position = Vector2(-48.9189, 163.063)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_vjyy3")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Ship"]
+position = Vector2(52.1802, 163.063)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_vjyy3")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 85.0
+offset_right = 751.0
+offset_bottom = 108.0
+theme_override_fonts/font = SubResource("SystemFont_kiovx")
+theme_override_font_sizes/font_size = 32
+text = "Time Remaining"
+horizontal_alignment = 1
