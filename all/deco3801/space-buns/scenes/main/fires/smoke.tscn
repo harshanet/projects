@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhk8av7ulex4g"]
+
+[ext_resource type="Texture2D" uid="uid://b6xobhq3oy4fq" path="res://scenes/main/assets/fire/smoke/smoke-1.png" id="1_tehta"]
+[ext_resource type="Texture2D" uid="uid://bkr4mbwsgwmwm" path="res://scenes/main/assets/fire/smoke/smoke-2.png" id="2_tbh2t"]
+[ext_resource type="Script" path="res://scenes/main/fires/smoke.gd" id="3_agyyx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvv8a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tehta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tbh2t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86tgh"]
+
+[node name="Smoke" type="CharacterBody2D"]
+z_index = 30
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_agyyx")
+
+[node name="Existence" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xvv8a")
+animation = &"idle"
+frame_progress = 0.409165
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_86tgh")
+
+[connection signal="timeout" from="Existence" to="." method="_on_existence_timeout"]

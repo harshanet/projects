@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd8qbvfwlvbsf"]
+
+[ext_resource type="Script" path="res://scenes/main/chemical_leak/toxicBin.gd" id="1_io5ch"]
+[ext_resource type="Texture2D" uid="uid://0k1kjdft55f4" path="res://scenes/main/assets/objects/medical-bin.png" id="2_c2h53"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csmuw"]
+size = Vector2(26, 42)
+
+[node name="ToxicBin" type="Area2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_io5ch")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -2)
+scale = Vector2(0.722222, 0.770833)
+texture = ExtResource("2_c2h53")
+region_enabled = true
+region_rect = Rect2(20.9604, 12.2505, 36.6908, 48.8041)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -2)
+shape = SubResource("RectangleShape2D_csmuw")

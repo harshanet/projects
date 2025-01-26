@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6xmuon8fhjor"]
+
+[ext_resource type="Texture2D" uid="uid://dgj7a8hmeu836" path="res://scenes/main/assets/objects/chemical-containter.png" id="1_crngu"]
+[ext_resource type="Texture2D" uid="uid://c8sa7mrplwaef" path="res://scenes/main/assets/objects/chemical-container-destroyed11.png" id="2_gi3xh"]
+[ext_resource type="Texture2D" uid="uid://ch75xhc2aqx0x" path="res://scenes/main/assets/objects/chemical-container-destroyed1.png" id="2_sbr5l"]
+[ext_resource type="Script" path="res://scenes/main/destroyables/destroyable.gd" id="3_0ctwj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dx7j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sbr5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gi3xh")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 0.1
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_crngu")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="PowerSource" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dx7j8")
+animation = &"destroyed"
+script = ExtResource("3_0ctwj")

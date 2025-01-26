@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cadspbyt16ybn"]
+
+[ext_resource type="Script" path="res://scenes/main/fires/BurnArea.gd" id="1_k7rn0"]
+
+[node name="BurnArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_k7rn0")

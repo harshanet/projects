@@ -1,0 +1,186 @@
+[gd_scene load_steps=25 format=3 uid="uid://bdra4y1ud3d3b"]
+
+[ext_resource type="Script" path="res://scenes/main/fires/petrol_fire.gd" id="1_7d0dl"]
+[ext_resource type="Texture2D" uid="uid://rs2cy2bkokt0" path="res://scenes/main/assets/fire/normal/loops/burning_loop_1.png" id="2_i1qwq"]
+[ext_resource type="Texture2D" uid="uid://dqlf4pvbdudac" path="res://scenes/main/assets/fire/normal/end/burning_end_1.png" id="3_m27r1"]
+[ext_resource type="Texture2D" uid="uid://pmsassij0oe5" path="res://assets/APfkB6p.png" id="4_j7pfv"]
+[ext_resource type="SpriteFrames" uid="uid://dlpx530qj5agg" path="res://scenes/main/fires/resource/black_smoke.tres" id="5_sjo37"]
+[ext_resource type="PackedScene" uid="uid://cadspbyt16ybn" path="res://scenes/main/fires/burn_area.tscn" id="6_yy2bl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pd2t"]
+size = Vector2(171, 95.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48rki"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws1by"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l26j"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o67r7"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onjga"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_src8r"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1pmq"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlifj"]
+atlas = ExtResource("2_i1qwq")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl4ke"]
+atlas = ExtResource("3_m27r1")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxg07"]
+atlas = ExtResource("3_m27r1")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibsr7"]
+atlas = ExtResource("3_m27r1")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q7ce"]
+atlas = ExtResource("3_m27r1")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt3e2"]
+atlas = ExtResource("3_m27r1")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3lufr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48rki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws1by")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l26j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o67r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onjga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_src8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1pmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlifj")
+}],
+"loop": true,
+"name": &"burning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl4ke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxg07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibsr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q7ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt3e2")
+}],
+"loop": false,
+"name": &"end",
+"speed": 5.0
+}]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0lumh"]
+properties/0/path = NodePath(".:sprayedTime")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vf7qy"]
+size = Vector2(42, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lebm1"]
+size = Vector2(79, 99)
+
+[node name="PetrolFire" type="Area2D"]
+z_index = 1
+position = Vector2(-6, -13)
+collision_mask = 35
+script = ExtResource("1_7d0dl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, -24)
+shape = SubResource("RectangleShape2D_6pd2t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(9, -60)
+scale = Vector2(5.88542, 5.23438)
+sprite_frames = SubResource("SpriteFrames_3lufr")
+animation = &"burning"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0lumh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(12, -33)
+scale = Vector2(0.262695, 0.172363)
+texture = ExtResource("4_j7pfv")
+
+[node name="MessagePosition" type="Node2D" parent="."]
+position = Vector2(4, -71)
+
+[node name="Smoke" type="AnimatedSprite2D" parent="."]
+position = Vector2(-17, -84)
+scale = Vector2(0.707182, 0.436384)
+sprite_frames = ExtResource("5_sjo37")
+animation = &"idle"
+
+[node name="Smoke2" type="AnimatedSprite2D" parent="."]
+position = Vector2(36, -84)
+scale = Vector2(0.748619, 0.465216)
+sprite_frames = ExtResource("5_sjo37")
+animation = &"idle"
+
+[node name="BurnArea" parent="." instance=ExtResource("6_yy2bl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurnArea"]
+position = Vector2(11, -10.5)
+shape = SubResource("RectangleShape2D_vf7qy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12.5, -26.5)
+shape = SubResource("RectangleShape2D_lebm1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

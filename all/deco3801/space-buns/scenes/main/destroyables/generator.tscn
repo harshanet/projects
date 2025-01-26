@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://hh66ufmuc7a2"]
+
+[ext_resource type="Texture2D" uid="uid://8sx826cen2j1" path="res://scenes/main/assets/objects/generator-destroyed.png" id="1_l48h5"]
+[ext_resource type="Texture2D" uid="uid://0ewrapr40p0g" path="res://scenes/main/assets/objects/generator.png" id="2_i8su7"]
+[ext_resource type="Script" path="res://scenes/main/destroyables/destroyable.gd" id="3_x17we"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dx7j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l48h5")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i8su7")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="generator" type="AnimatedSprite2D"]
+position = Vector2(-3.25, 5.75)
+scale = Vector2(1.38281, 1.30469)
+sprite_frames = SubResource("SpriteFrames_dx7j8")
+animation = &"destroyed"
+script = ExtResource("3_x17we")

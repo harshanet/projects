@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://7vrdyerkfsnw"]
+
+[ext_resource type="Script" path="res://scenes/main/electricity/water_leak.gd" id="1_7y5bv"]
+[ext_resource type="Texture2D" uid="uid://cah1qu8kvuisg" path="res://scenes/main/assets/electricity/Water Tile.png" id="1_la8vl"]
+[ext_resource type="Script" path="res://scenes/main/electricity/water_container.gd" id="1_t4jja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kktny"]
+size = Vector2(342, 17)
+
+[node name="WaterContainer" type="Area2D"]
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("1_t4jja")
+
+[node name="WaterLeak" type="Area2D" parent="."]
+z_index = 32
+collision_layer = 8
+collision_mask = 10
+script = ExtResource("1_7y5bv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterLeak"]
+position = Vector2(41, 2.5)
+shape = SubResource("RectangleShape2D_kktny")
+
+[node name="Sprite2D" type="Sprite2D" parent="WaterLeak"]
+position = Vector2(42, 3)
+scale = Vector2(1.12131, 1.25)
+texture = ExtResource("1_la8vl")
+region_enabled = true
+region_rect = Rect2(-0.122131, 0.617523, 305.811, 16.494)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

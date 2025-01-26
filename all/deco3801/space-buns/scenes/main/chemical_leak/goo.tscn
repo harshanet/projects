@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://15q4bkr5ll77"]
+
+[ext_resource type="Texture2D" uid="uid://ce7ddbk6vk2hg" path="res://scenes/main/assets/goo_cleanup/green.png" id="1_pngv4"]
+[ext_resource type="Script" path="res://scenes/main/chemical_leak/goo.gd" id="1_urqsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7if5w"]
+size = Vector2(30, 6)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_c20y1"]
+properties/0/path = NodePath(".:mopTime")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+
+[node name="Goo" type="Area2D"]
+z_index = 3
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_urqsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_7if5w")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_c20y1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, -2)
+scale = Vector2(1.40625, 0.454545)
+texture = ExtResource("1_pngv4")
+
+[node name="GooPos" type="Node2D" parent="."]
+position = Vector2(-30, 0)
+scale = Vector2(-3, -3)
+
+[node name="GasPos" type="Node2D" parent="."]
+position = Vector2(0, -40)
+
+[node name="GooPos2" type="Node2D" parent="."]
+position = Vector2(25, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

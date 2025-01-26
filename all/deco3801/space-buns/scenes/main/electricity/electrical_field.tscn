@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://bujprbcx5fn0p"]
+
+[ext_resource type="Script" path="res://scenes/main/electricity/electrical_field.gd" id="1_rwy5q"]
+[ext_resource type="Texture2D" uid="uid://dtpeh7uafse0e" path="res://scenes/main/assets/electricity/Explosion_blue_oval1.png" id="2_4spwe"]
+[ext_resource type="Texture2D" uid="uid://r8o63p25nww" path="res://scenes/main/assets/electricity/Explosion_blue_oval2.png" id="3_a24r2"]
+[ext_resource type="Texture2D" uid="uid://juro1xgci4na" path="res://scenes/main/assets/electricity/Explosion_blue_oval3.png" id="4_jqfhu"]
+[ext_resource type="Texture2D" uid="uid://bce2q0i3xs3fv" path="res://scenes/main/assets/electricity/Explosion_blue_oval4.png" id="5_jufj6"]
+[ext_resource type="Texture2D" uid="uid://bwjcc0eukv8mk" path="res://scenes/main/assets/electricity/Explosion_blue_oval5.png" id="6_oji4l"]
+[ext_resource type="Texture2D" uid="uid://dt61n34q6mtp6" path="res://scenes/main/assets/electricity/Explosion_blue_oval6.png" id="7_eks01"]
+[ext_resource type="Texture2D" uid="uid://dxt5ddwcmuiyd" path="res://scenes/main/assets/electricity/Explosion_blue_oval7.png" id="8_ism27"]
+[ext_resource type="Texture2D" uid="uid://dfo4s0c7jp7r5" path="res://scenes/main/assets/electricity/Explosion_blue_oval8.png" id="9_ierum"]
+[ext_resource type="Texture2D" uid="uid://cchbhxskv52ex" path="res://scenes/main/assets/electricity/Explosion_blue_oval9.png" id="10_j2bcu"]
+[ext_resource type="Texture2D" uid="uid://cpxfnwvwila8" path="res://scenes/main/assets/electricity/Explosion_blue_oval10.png" id="11_ktgxw"]
+[ext_resource type="Texture2D" uid="uid://bw7sjvvm703ki" path="res://scenes/main/assets/goo_cleanup/electric.png" id="11_sktx3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8f1q"]
+atlas = ExtResource("11_sktx3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4fo0"]
+atlas = ExtResource("11_sktx3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2grp"]
+atlas = ExtResource("11_sktx3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lwc26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4spwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a24r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jqfhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jufj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oji4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eks01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ism27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ierum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j2bcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ktgxw")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8f1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4fo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2grp")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="ElectricalField" type="Area2D"]
+collision_layer = 1032
+collision_mask = 523
+script = ExtResource("1_rwy5q")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, 18)
+scale = Vector2(1.19531, 1.16016)
+sprite_frames = SubResource("SpriteFrames_lwc26")
+animation = &"explode"
+frame = 9
+frame_progress = 1.0
+
+[node name="Electricity" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.999998, -7)
+scale = Vector2(1.69727, 1.48975)
+sprite_frames = SubResource("SpriteFrames_lwc26")
+animation = &"normal"
+autoplay = "normal"
+frame_progress = 0.401353
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
+[connection signal="animation_finished" from="Electricity" to="." method="_on_electricity_animation_finished"]

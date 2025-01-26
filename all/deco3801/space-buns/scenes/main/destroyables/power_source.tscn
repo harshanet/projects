@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpo44wmoribyj"]
+
+[ext_resource type="Texture2D" uid="uid://dd6w1xdcwc8ru" path="res://scenes/main/assets/objects/power-source-destroyed.png" id="1_otl23"]
+[ext_resource type="Texture2D" uid="uid://dqbudweep4skp" path="res://scenes/main/assets/objects/power-source.png" id="2_4wtin"]
+[ext_resource type="Script" path="res://scenes/main/destroyables/destroyable.gd" id="3_r7vpl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dx7j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_otl23")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4wtin")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="PowerSource" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dx7j8")
+animation = &"normal"
+script = ExtResource("3_r7vpl")

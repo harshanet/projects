@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://h588fr7h5o55"]
+
+[ext_resource type="Texture2D" uid="uid://da6qee3v3m4af" path="res://scenes/main/assets/objects/computer-destroyed.png" id="1_7mfp2"]
+[ext_resource type="Texture2D" uid="uid://bjt5ddnigia3p" path="res://scenes/main/assets/objects/computer.png" id="2_d6w6a"]
+[ext_resource type="Script" path="res://scenes/main/destroyables/destroyable.gd" id="3_5xp6n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dx7j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7mfp2")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d6w6a")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="Computer" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dx7j8")
+animation = &"destroyed"
+script = ExtResource("3_5xp6n")

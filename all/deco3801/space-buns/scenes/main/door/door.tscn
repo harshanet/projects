@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq2wfxrhqqmkx"]
+
+[ext_resource type="Script" path="res://scenes/main/door/Door.gd" id="1_jen1p"]
+[ext_resource type="Texture2D" uid="uid://btpy8h52n7ow" path="res://scenes/main/assets/objects/lpc-doors-animated-1 (1).png" id="2_qwhaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb8dq"]
+size = Vector2(92, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h1d2"]
+atlas = ExtResource("2_qwhaj")
+region = Rect2(321, 286, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5pv8"]
+atlas = ExtResource("2_qwhaj")
+region = Rect2(321, 350, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnh0h"]
+atlas = ExtResource("2_qwhaj")
+region = Rect2(321, 414, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nusx"]
+atlas = ExtResource("2_qwhaj")
+region = Rect2(321, 478, 63, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pui1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h1d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5pv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnh0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nusx")
+}],
+"loop": true,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nusx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nusx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnh0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5pv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h1d2")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qwf4"]
+size = Vector2(19, 96)
+
+[node name="Door" type="Area2D"]
+z_index = 1
+collision_mask = 290
+script = ExtResource("1_jen1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, -11)
+shape = SubResource("RectangleShape2D_fb8dq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(1.9246, 2.03906)
+sprite_frames = SubResource("SpriteFrames_pui1x")
+animation = &"close"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5, -11)
+shape = SubResource("RectangleShape2D_0qwf4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

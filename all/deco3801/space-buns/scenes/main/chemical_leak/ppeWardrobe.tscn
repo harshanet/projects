@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://c27vep4k5twkj"]
+
+[ext_resource type="Script" path="res://scenes/main/chemical_leak/ppeWardrobe.gd" id="1_rfxyn"]
+[ext_resource type="Texture2D" uid="uid://cdkhjomryx75p" path="res://scenes/main/assets/goo_cleanup/cupboardOpen.png" id="1_y3pfa"]
+[ext_resource type="Texture2D" uid="uid://c6aitqywc65oa" path="res://scenes/main/assets/goo_cleanup/cupboardShut.png" id="2_5imu5"]
+[ext_resource type="Texture2D" uid="uid://c6hg4f18sfiho" path="res://scenes/main/clothes/lab-coat.png" id="4_3pymv"]
+[ext_resource type="Texture2D" uid="uid://b72aredvqju8w" path="res://scenes/main/clothes/mask.png" id="5_ih5d4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f006l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y3pfa")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5imu5")
+}],
+"loop": true,
+"name": &"shut",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmgk4"]
+size = Vector2(52, 54)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_rfxyn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f006l")
+animation = &"open"
+autoplay = "shut"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nmgk4")
+
+[node name="CoatSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_3pymv")
+
+[node name="MaskSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ih5d4")

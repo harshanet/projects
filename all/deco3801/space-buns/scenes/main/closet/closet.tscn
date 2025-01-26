@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtubdclogiun8"]
+
+[ext_resource type="Script" path="res://scenes/main/closet/closet.gd" id="1_02y54"]
+[ext_resource type="Texture2D" uid="uid://c75h2nqh2q8gj" path="res://scenes/main/assets/tiles/PNG/Locker.png" id="1_4ghx3"]
+[ext_resource type="Texture2D" uid="uid://dwdyntvbknct4" path="res://scenes/main/assets/tiles/PNG/Locker open.png" id="2_b11ag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_velck"]
+size = Vector2(44.75, 94.875)
+
+[node name="closet" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_02y54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, -11.4375)
+shape = SubResource("RectangleShape2D_velck")
+
+[node name="Open" type="Sprite2D" parent="."]
+position = Vector2(5.5, -9)
+scale = Vector2(1.23913, 1.24324)
+texture = ExtResource("2_b11ag")
+
+[node name="Close" type="Sprite2D" parent="."]
+position = Vector2(19, -8.51562)
+scale = Vector2(1.26923, 1.22931)
+texture = ExtResource("1_4ghx3")
