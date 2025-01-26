@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://77omfsyeragt"]
+
+[ext_resource type="Texture2D" uid="uid://q6ydr3matyts" path="res://alien_insect_task/assets/MantisMove.png" id="1_g2185"]
+[ext_resource type="Script" path="res://alien_insect_task/alien_insect.gd" id="1_lpnx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmuyl"]
+size = Vector2(66, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahjgv"]
+atlas = ExtResource("1_g2185")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjp7h"]
+atlas = ExtResource("1_g2185")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt5rp"]
+atlas = ExtResource("1_g2185")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57oio"]
+atlas = ExtResource("1_g2185")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1unv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahjgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjp7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt5rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57oio")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8lbr"]
+size = Vector2(31, 37)
+
+[node name="AlienInsect" type="CharacterBody2D"]
+collision_layer = 256
+script = ExtResource("1_lpnx0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -5.5)
+shape = SubResource("RectangleShape2D_wmuyl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.5, -8)
+scale = Vector2(1.28125, 1.125)
+sprite_frames = SubResource("SpriteFrames_o1unv")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.247811
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5.5, -8.5)
+shape = SubResource("RectangleShape2D_p8lbr")
