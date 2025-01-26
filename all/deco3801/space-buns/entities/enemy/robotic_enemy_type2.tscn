@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://dfp8l40a7pqd0"]
+
+[ext_resource type="Script" path="res://entities/enemy/robotic_enemy.gd" id="1_wpl0j"]
+[ext_resource type="PackedScene" uid="uid://derfka1l765vi" path="res://entities/effects/bullets/bullet.tscn" id="2_ikmqu"]
+[ext_resource type="SpriteFrames" uid="uid://bir88nwjukiqe" path="res://entities/enemy/resources/Enemy3.tres" id="2_mx43y"]
+[ext_resource type="Script" path="res://finite_state_machine/NPCFiniteStateMachine.gd" id="4_bld3e"]
+[ext_resource type="Script" path="res://entities/enemy/AttackState.gd" id="5_4sh03"]
+[ext_resource type="Script" path="res://entities/enemy/UnactivatedState.gd" id="6_etpmy"]
+[ext_resource type="Script" path="res://entities/enemy/WaitingState.gd" id="7_arc2p"]
+[ext_resource type="Script" path="res://entities/enemy/DeactivatedState.gd" id="8_dm4ck"]
+[ext_resource type="Script" path="res://entities/enemy/DeathState.gd" id="9_kn26p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h040c"]
+size = Vector2(57, 88)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g5v0x"]
+properties/0/path = NodePath("AnimatedSprite2D:animation")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath("AnimatedSprite2D:frame")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath("AnimatedSprite2D:flip_h")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+properties/4/path = NodePath(".:hit_times")
+properties/4/spawn = true
+properties/4/sync = true
+properties/4/watch = false
+properties/5/path = NodePath("GunRotation:rotation")
+properties/5/spawn = true
+properties/5/sync = true
+properties/5/watch = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5685"]
+size = Vector2(508, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ue4u"]
+size = Vector2(47, 86)
+
+[node name="RoboticEnemy" type="CharacterBody2D"]
+collision_layer = 256
+script = ExtResource("1_wpl0j")
+animations = ExtResource("2_mx43y")
+projectile = ExtResource("2_ikmqu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -39)
+scale = Vector2(1.5, 1.11718)
+sprite_frames = ExtResource("2_mx43y")
+animation = &"idle"
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -11)
+shape = SubResource("RectangleShape2D_h040c")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_g5v0x")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("4_bld3e")
+state = NodePath("UnactivatedState")
+
+[node name="AttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("5_4sh03")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="UnactivatedState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("6_etpmy")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="WaitingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("7_arc2p")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="DeactivatedState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("8_dm4ck")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="DeathState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("9_kn26p")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(5, 10.5)
+shape = SubResource("RectangleShape2D_b5685")
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(5.5, -12)
+shape = SubResource("RectangleShape2D_6ue4u")
+
+[node name="GunRotation" type="Node2D" parent="."]
+position = Vector2(13, -33)
+
+[node name="BulletSpawn" type="Node2D" parent="GunRotation"]
+position = Vector2(52, 1)
+
+[node name="Firing" type="Timer" parent="."]
+wait_time = 0.504
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
