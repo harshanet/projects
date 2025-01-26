@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://betkk7ywrry6t"]
+
+[ext_resource type="Script" path="res://tasks/taskmanager.gd" id="1_b55j5"]
+
+[node name="TaskManager" type="Node2D"]
+script = ExtResource("1_b55j5")
+tasks = null
