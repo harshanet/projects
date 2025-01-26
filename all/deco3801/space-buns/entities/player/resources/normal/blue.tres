@@ -1,0 +1,76 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://s7t3hoom18ur"]
+
+[ext_resource type="Texture2D" uid="uid://pftqf42ygpgy" path="res://entities/player/assets/animations/climb/(pixel)BAZ-back-climbright.png" id="1_y8pkl"]
+[ext_resource type="Texture2D" uid="uid://cxcu4g6epkhi7" path="res://entities/player/assets/animations/climb/(pixel)BAZ-back-climbleft.png" id="2_opei6"]
+[ext_resource type="Texture2D" uid="uid://c0j8k2jbyfk5i" path="res://entities/player/assets/animations/idle/(pixel)BAZ-sprite-neutral.png" id="3_8si16"]
+[ext_resource type="Texture2D" uid="uid://wwur5btbwein" path="res://entities/player/assets/animations/electrocuted/electrocuted.png" id="3_pm5g5"]
+[ext_resource type="Texture2D" uid="uid://c7u7154lwakl4" path="res://entities/player/assets/animations/injured/(pixel)BAZ-sprite-neutral.png" id="4_afdvw"]
+[ext_resource type="Texture2D" uid="uid://cq3xk6ccwvfg3" path="res://entities/player/assets/animations/run/(pixel)BAZ-sprite-facingright-notwide.png" id="5_d21xe"]
+[ext_resource type="Texture2D" uid="uid://bo25dn8fpra8m" path="res://entities/player/assets/animations/run/(pixel)BAZ-sprite-facingright-wide.png" id="6_m6ckn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keid1"]
+atlas = ExtResource("3_pm5g5")
+region = Rect2(0, 0, 243, 194)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4d5n"]
+atlas = ExtResource("3_pm5g5")
+region = Rect2(243, 0, 243, 194)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gps03"]
+atlas = ExtResource("3_pm5g5")
+region = Rect2(486, 0, 243, 194)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y8pkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_opei6")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keid1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4d5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gps03")
+}],
+"loop": true,
+"name": &"electrocuted",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8si16")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_afdvw")
+}],
+"loop": true,
+"name": &"injured",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d21xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m6ckn")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]

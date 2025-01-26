@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MovementData" load_steps=3 format=3 uid="uid://cl16cet5gplwc"]
+
+[ext_resource type="Script" path="res://entities/player/kinematics/resources/movement_data.gd" id="1_smlft"]
+
+[sub_resource type="Curve" id="Curve_v1tgo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_smlft")
+DURATION = inf
+MIN_SPEED = 150.0
+MAX_SPEED = 150.0
+ACCELERATION = 100.0
+GLYCEMIC_INDEX = SubResource("Curve_v1tgo")

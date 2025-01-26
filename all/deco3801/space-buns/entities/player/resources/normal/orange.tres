@@ -1,0 +1,76 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://5gswhdnjx5u6"]
+
+[ext_resource type="Texture2D" uid="uid://ccr8x48r5p14j" path="res://entities/player/assets/animations/climb/(pixel)PHIL-back-climbright.png" id="1_ryw78"]
+[ext_resource type="Texture2D" uid="uid://chtgpanokob4l" path="res://entities/player/assets/animations/climb/(pixel)PHIL-back-climbleft.png" id="2_4htsi"]
+[ext_resource type="Texture2D" uid="uid://wwur5btbwein" path="res://entities/player/assets/animations/electrocuted/electrocuted.png" id="3_ecuer"]
+[ext_resource type="Texture2D" uid="uid://bvxqa4frkyxri" path="res://entities/player/assets/animations/idle/(pixel)PHIL-sprite-neutral.png" id="3_ljmsr"]
+[ext_resource type="Texture2D" uid="uid://dtlje6tpedab" path="res://entities/player/assets/animations/injured/(pixel)PHIL-sprite-neutral.png" id="4_unilv"]
+[ext_resource type="Texture2D" uid="uid://di6s7f5ey4v3u" path="res://entities/player/assets/animations/run/(pixel)PHIL-sprite-facingright-notwide.png" id="5_3ip8k"]
+[ext_resource type="Texture2D" uid="uid://ckboxehro3qes" path="res://entities/player/assets/animations/run/(pixel)PHIL-sprite-facingright-wide.png" id="6_omy5x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keid1"]
+atlas = ExtResource("3_ecuer")
+region = Rect2(0, 0, 243, 194)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4d5n"]
+atlas = ExtResource("3_ecuer")
+region = Rect2(243, 0, 243, 194)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gps03"]
+atlas = ExtResource("3_ecuer")
+region = Rect2(486, 0, 243, 194)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ryw78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4htsi")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keid1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4d5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gps03")
+}],
+"loop": true,
+"name": &"electrocuted",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ljmsr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_unilv")
+}],
+"loop": true,
+"name": &"injured",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3ip8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_omy5x")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]

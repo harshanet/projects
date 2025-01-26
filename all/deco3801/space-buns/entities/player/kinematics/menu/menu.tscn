@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://yiqdb0ovai0y"]
+
+[ext_resource type="Texture2D" uid="uid://vob3cwnmclw4" path="res://entities/player/kinematics/menu/bread-pastry.png" id="1_f3bb1"]
+[ext_resource type="Script" path="res://entities/player/kinematics/menu/menu.gd" id="1_j2ibd"]
+[ext_resource type="Resource" uid="uid://b7opfim4gub01" path="res://entities/player/kinematics/resources/HighGI.tres" id="2_8hm7e"]
+[ext_resource type="Texture2D" uid="uid://mfyttmqcvmnh" path="res://entities/player/kinematics/menu/foodfromcts1a.png" id="2_nn3qc"]
+[ext_resource type="Resource" uid="uid://cxth8e4rc3rre" path="res://entities/player/kinematics/resources/MediumGI.tres" id="3_usreg"]
+[ext_resource type="Resource" uid="uid://cbbnxonindcox" path="res://entities/player/kinematics/resources/LowGI.tres" id="4_hybwt"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.21
+anchor_bottom = 0.258
+offset_right = -403.2
+offset_bottom = -278.64
+script = ExtResource("1_j2ibd")
+powerups = Array[Resource("res://entities/player/kinematics/resources/movement_data.gd")]([ExtResource("2_8hm7e"), ExtResource("3_usreg"), ExtResource("4_hybwt")])
+
+[node name="Button1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.165
+anchor_bottom = 0.069
+offset_right = 414.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 48
+text = " Eat Brownie"
+alignment = 0
+icon_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Button1"]
+position = Vector2(367, 37)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f3bb1")
+region_enabled = true
+region_rect = Rect2(68, 165, 24, 23)
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.165
+anchor_bottom = 0.069
+offset_top = 112.0
+offset_right = 414.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 48
+text = " Eat Salad"
+alignment = 0
+icon_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Button2"]
+position = Vector2(367, 37)
+scale = Vector2(2, 2)
+texture = ExtResource("2_nn3qc")
+region_enabled = true
+region_rect = Rect2(177, 247, 20, 16)
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.165
+anchor_bottom = 0.069
+offset_top = 232.0
+offset_right = 414.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 48
+text = " Eat Sandwich"
+alignment = 0
+icon_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Button3"]
+position = Vector2(367, 37)
+scale = Vector2(2, 2)
+texture = ExtResource("2_nn3qc")
+region_enabled = true
+region_rect = Rect2(209, 45, 23, 12)

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MovementData" load_steps=3 format=3 uid="uid://cbbnxonindcox"]
+
+[ext_resource type="Script" path="res://entities/player/kinematics/resources/movement_data.gd" id="1_edbxl"]
+
+[sub_resource type="Curve" id="Curve_5sw7t"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.0873786, 0), 0.0, 0.0, 0, 0, Vector2(0.262887, 0), 0.0, 0.0, 0, 0, Vector2(0.412371, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("1_edbxl")
+DURATION = 60.0
+MIN_SPEED = 140.0
+MAX_SPEED = 160.0
+ACCELERATION = 110.0
+GLYCEMIC_INDEX = SubResource("Curve_5sw7t")

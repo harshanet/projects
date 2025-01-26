@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl3nwqphyqhkm"]
+
+[ext_resource type="PackedScene" uid="uid://34823h60oyfl" path="res://entities/player/player.tscn" id="1_up5tm"]
+[ext_resource type="Script" path="res://entities/player/imposter.gd" id="2_i8j7h"]
+[ext_resource type="Texture2D" uid="uid://dl17kd6o32i0q" path="res://entities/player/assets/buttons/invisible.png" id="5_bgkj1"]
+[ext_resource type="Texture2D" uid="uid://kdheuugn11a" path="res://entities/player/assets/buttons/8981456-removebg-preview (1).png" id="5_olr2g"]
+[ext_resource type="Texture2D" uid="uid://c4fc7wd7lsp3t" path="res://entities/player/assets/buttons/Crounch.png" id="6_op4kw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0kgvy"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_02tfn"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gkhj3"]
+blend_mode = 1
+light_mode = 1
+
+[node name="Imposter" instance=ExtResource("1_up5tm")]
+script = ExtResource("2_i8j7h")
+
+[node name="PointLight2D" parent="." index="4"]
+position = Vector2(-2.08165e-12, -38)
+scale = Vector2(1.07905, 0.585938)
+
+[node name="ActivateButton" parent="." index="16"]
+position = Vector2(187, 87)
+scale = Vector2(0.5, 0.491667)
+
+[node name="Invisible" type="TouchScreenButton" parent="." index="17"]
+material = SubResource("CanvasItemMaterial_0kgvy")
+position = Vector2(199, 53)
+scale = Vector2(0.0195313, 0.0207296)
+texture_normal = ExtResource("5_bgkj1")
+
+[node name="InvisibleCountdown" type="Timer" parent="Invisible" index="0"]
+wait_time = 30.0
+one_shot = true
+
+[node name="InvisibleDuration" type="Timer" parent="Invisible" index="1"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Sabotage" type="TouchScreenButton" parent="." index="18"]
+material = SubResource("CanvasItemMaterial_02tfn")
+position = Vector2(161, 69)
+scale = Vector2(0.0203125, 0.0195314)
+texture_normal = ExtResource("6_op4kw")
+
+[node name="ExplosiveCooldown" type="Timer" parent="Sabotage" index="0"]
+wait_time = 30.0
+one_shot = true
+
+[node name="AlienRelease" type="TouchScreenButton" parent="." index="19"]
+material = SubResource("CanvasItemMaterial_gkhj3")
+position = Vector2(116, 92)
+scale = Vector2(0.281818, 0.274809)
+texture_normal = ExtResource("5_olr2g")
+
+[node name="AlienReleaseCooldown" type="Timer" parent="AlienRelease" index="0"]
+wait_time = 120.0
+
+[node name="InteractButton" parent="." index="20"]
+position = Vector2(153, 102)
+scale = Vector2(0.01875, 0.017969)
+
+[connection signal="timeout" from="Invisible/InvisibleCountdown" to="." method="_on_invisible_countdown_timeout"]
+[connection signal="timeout" from="Sabotage/ExplosiveCooldown" to="." method="_on_explosive_cooldown_timeout"]
+[connection signal="timeout" from="AlienRelease/AlienReleaseCooldown" to="." method="_on_alien_release_cooldown_timeout"]

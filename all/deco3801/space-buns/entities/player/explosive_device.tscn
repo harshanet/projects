@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm2jyibxllxpk"]
+
+[ext_resource type="Script" path="res://entities/player/explosive_device.gd" id="1_mngys"]
+[ext_resource type="Texture2D" uid="uid://6ivfh6amkhdq" path="res://entities/player/assets/imposter/1.png" id="1_yfq8y"]
+
+[node name="ExplosiveDevice" type="Node2D"]
+script = ExtResource("1_mngys")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.61765, 1.5)
+texture = ExtResource("1_yfq8y")
+region_enabled = true
+region_rect = Rect2(78.3496, -0.329727, 17.3827, 19.2263)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
