@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxm7rwkq0fd1u"
+path="res://.godot/imported/Space Sprinkles.mp3-7a1462b643c73a08b89e11354d724aa4.mp3str"
+
+[deps]
+
+source_file="res://scenes/main/assets/music/Space Sprinkles.mp3"
+dest_files=["res://.godot/imported/Space Sprinkles.mp3-7a1462b643c73a08b89e11354d724aa4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

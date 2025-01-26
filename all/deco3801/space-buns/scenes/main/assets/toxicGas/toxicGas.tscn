@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq33fmsfgqcdr"]
+
+[ext_resource type="Script" path="res://scenes/main/assets/toxicGas/toxicGas.gd" id="1_kun4s"]
+[ext_resource type="Texture2D" uid="uid://daut5paeki1gp" path="res://scenes/main/assets/toxicGas/greenGas/fart02.png" id="2_8iphs"]
+[ext_resource type="Texture2D" uid="uid://dica121vsdoxx" path="res://scenes/main/assets/toxicGas/greenGas/fart05.png" id="3_4vjcu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khmn1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8iphs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4vjcu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwaj"]
+size = Vector2(26, 54)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_y58lp"]
+properties/0/path = NodePath(".:sprayedTime")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+
+[node name="toxicGas" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_kun4s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_khmn1")
+autoplay = "default"
+frame_progress = 0.498544
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 15)
+shape = SubResource("RectangleShape2D_nlwaj")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_y58lp")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-30, 0)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
