@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy81cetk4xnkr"]
+
+[ext_resource type="Texture2D" uid="uid://v1bbrj73k0h5" path="res://scenes/main/assets/objects/SciFiFurniture1.1.png" id="1_jwlee"]
+[ext_resource type="Script" path="res://entities/robotic_war/activation_machine.gd" id="2_epm6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6smky"]
+size = Vector2(68.5, 81.5)
+
+[node name="activation_machine" type="Area2D" groups=["PoliceManager"]]
+collision_layer = 4
+script = ExtResource("2_epm6w")
+
+[node name="activation_machine" type="Sprite2D" parent="."]
+position = Vector2(-9, 46)
+scale = Vector2(1.04915, 1.10965)
+texture = ExtResource("1_jwlee")
+region_enabled = true
+region_rect = Rect2(405.506, 204.058, 75.8659, 88.8877)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 48)
+shape = SubResource("RectangleShape2D_6smky")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

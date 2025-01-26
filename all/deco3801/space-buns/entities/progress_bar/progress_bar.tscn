@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b44rmw7xjmc5b"]
+
+[ext_resource type="Script" path="res://entities/progress_bar/progress_bar.gd" id="1_weo3j"]
+[ext_resource type="Texture2D" uid="uid://dfx5q51joueur" path="res://entities/assets/output-onlinepngtools (3).png" id="2_ph5rh"]
+[ext_resource type="Texture2D" uid="uid://b62msch4ykqpb" path="res://entities/assets/output-onlinepngtools (4).png" id="3_httw8"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_weo3j")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -33.0
+offset_top = -27.0
+offset_right = 31.0
+offset_bottom = 37.0
+texture_under = ExtResource("2_ph5rh")
+texture_progress = ExtResource("3_httw8")
+texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)

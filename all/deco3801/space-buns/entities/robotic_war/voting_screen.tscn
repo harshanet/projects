@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://bognp8457rips"]
+
+[ext_resource type="Script" path="res://entities/robotic_war/voting_screen.gd" id="1_6qyr8"]
+[ext_resource type="Texture2D" uid="uid://cn21jkhwy0ldt" path="res://entities/robotic_war/assets/Window02.png" id="1_exvjt"]
+[ext_resource type="Texture2D" uid="uid://bigb68tmhc4ox" path="res://entities/robotic_war/assets/BtnExitOpacity.png" id="2_hjsg3"]
+[ext_resource type="Texture2D" uid="uid://h6dwmsang4r7" path="res://entities/robotic_war/assets/Panel2_NoOpacity591x975px.png" id="3_2t5dw"]
+[ext_resource type="Texture2D" uid="uid://jlelh6bvf7jk" path="res://entities/robotic_war/assets/Panel2_Opacity591x975px.png" id="3_j6e6x"]
+[ext_resource type="Script" path="res://entities/robotic_war/Quit.gd" id="4_d1mk8"]
+[ext_resource type="Texture2D" uid="uid://c0j8k2jbyfk5i" path="res://entities/player/assets/animations/idle/(pixel)BAZ-sprite-neutral.png" id="4_oebci"]
+[ext_resource type="Texture2D" uid="uid://b4e1s64pqw5k1" path="res://entities/player/assets/animations/idle/(pixel)HARSHA-sprite-neutral.png" id="5_8pyc1"]
+[ext_resource type="Script" path="res://entities/robotic_war/vote_slot.gd" id="5_cjq4e"]
+[ext_resource type="Texture2D" uid="uid://bvxqa4frkyxri" path="res://entities/player/assets/animations/idle/(pixel)PHIL-sprite-neutral.png" id="6_1t1hr"]
+[ext_resource type="Texture2D" uid="uid://c3p45imbcmltu" path="res://entities/player/assets/animations/idle/(pixel)VICTOR-sprite-neutral.png" id="7_5n8ne"]
+[ext_resource type="Texture2D" uid="uid://c3o4uimwgdt4" path="res://entities/player/assets/animations/idle/(pixel)RIO-sprite-neutral.png" id="8_rralc"]
+[ext_resource type="Texture2D" uid="uid://du6rwgu117io" path="res://entities/player/assets/animations/idle/(pixel)NEHA-sprite-neutral.png" id="9_javdc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rku3g"]
+font_size = 31
+
+[node name="VotingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6qyr8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -471.0
+offset_top = -264.0
+offset_right = 458.0
+offset_bottom = 281.0
+texture = ExtResource("1_exvjt")
+
+[node name="Quit" type="TouchScreenButton" parent="."]
+position = Vector2(-480, -279)
+texture_normal = ExtResource("2_hjsg3")
+script = ExtResource("4_d1mk8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -149.0
+offset_top = -252.0
+offset_right = 182.0
+offset_bottom = -197.0
+text = "Who is the imposter ? "
+label_settings = SubResource("LabelSettings_rku3g")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = -380.0
+offset_top = -163.0
+offset_right = 377.0
+offset_bottom = 233.0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="GridContainer"]
+position = Vector2(45, 50)
+scale = Vector2(0.218274, 0.106667)
+texture_normal = ExtResource("3_j6e6x")
+texture_pressed = ExtResource("3_2t5dw")
+script = ExtResource("5_cjq4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/TouchScreenButton"]
+position = Vector2(279.465, 478.125)
+scale = Vector2(2.39902, 4.77461)
+texture = ExtResource("4_oebci")
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="GridContainer"]
+position = Vector2(313, 50)
+scale = Vector2(0.218274, 0.106667)
+texture_normal = ExtResource("3_j6e6x")
+texture_pressed = ExtResource("3_2t5dw")
+script = ExtResource("5_cjq4e")
+
+[node name="Sprite2D2" type="Sprite2D" parent="GridContainer/TouchScreenButton2"]
+position = Vector2(293.208, 478.125)
+scale = Vector2(2.39902, 4.77461)
+texture = ExtResource("5_8pyc1")
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="GridContainer"]
+position = Vector2(569, 50)
+scale = Vector2(0.218274, 0.106667)
+texture_normal = ExtResource("3_j6e6x")
+texture_pressed = ExtResource("3_2t5dw")
+script = ExtResource("5_cjq4e")
+
+[node name="Sprite2D3" type="Sprite2D" parent="GridContainer/TouchScreenButton3"]
+position = Vector2(297.79, 496.875)
+scale = Vector2(2.39902, 4.77461)
+texture = ExtResource("6_1t1hr")
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="GridContainer"]
+position = Vector2(45.0001, 250)
+scale = Vector2(0.218274, 0.106667)
+texture_normal = ExtResource("3_j6e6x")
+texture_pressed = ExtResource("3_2t5dw")
+script = ExtResource("5_cjq4e")
+
+[node name="Sprite2D3" type="Sprite2D" parent="GridContainer/TouchScreenButton4"]
+position = Vector2(284.045, 487.5)
+scale = Vector2(2.39902, 4.77461)
+texture = ExtResource("7_5n8ne")
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="GridContainer"]
+position = Vector2(313, 250)
+scale = Vector2(0.218274, 0.106667)
+texture_normal = ExtResource("3_j6e6x")
+texture_pressed = ExtResource("3_2t5dw")
+script = ExtResource("5_cjq4e")
+
+[node name="Sprite2D4" type="Sprite2D" parent="GridContainer/TouchScreenButton5"]
+position = Vector2(297.791, 496.875)
+scale = Vector2(2.39902, 4.77461)
+texture = ExtResource("8_rralc")
+
+[node name="TouchScreenButton6" type="TouchScreenButton" parent="GridContainer"]
+position = Vector2(569, 250)
+scale = Vector2(0.218274, 0.106667)
+texture_normal = ExtResource("3_j6e6x")
+texture_pressed = ExtResource("3_2t5dw")
+script = ExtResource("5_cjq4e")
+
+[node name="Sprite2D5" type="Sprite2D" parent="GridContainer/TouchScreenButton6"]
+position = Vector2(297.791, 506.25)
+scale = Vector2(2.39902, 4.77461)
+texture = ExtResource("9_javdc")
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
