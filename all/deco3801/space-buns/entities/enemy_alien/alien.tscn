@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://capfxvkndyevr"]
+
+[ext_resource type="Script" path="res://entities/enemy_alien/alien.gd" id="2_1pskc"]
+[ext_resource type="SpriteFrames" uid="uid://b23h2e47n25vj" path="res://entities/enemy_alien/resources/alien_flee.tres" id="2_118p6"]
+[ext_resource type="Script" path="res://finite_state_machine/NPCFiniteStateMachine.gd" id="3_e7o7f"]
+[ext_resource type="Script" path="res://entities/enemy_alien/AlienWanderState.gd" id="4_cphw1"]
+[ext_resource type="Script" path="res://entities/enemy_alien/AlienAttackState.gd" id="5_05spd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7bdm"]
+size = Vector2(91, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vc18j"]
+size = Vector2(362, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4c56"]
+size = Vector2(78, 61)
+
+[node name="Alien" type="CharacterBody2D"]
+position = Vector2(-3, -56)
+collision_layer = 256
+script = ExtResource("2_1pskc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10.5, -11)
+shape = SubResource("RectangleShape2D_u7bdm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, -9)
+scale = Vector2(0.438049, 0.413442)
+sprite_frames = ExtResource("2_118p6")
+animation = &"death"
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_e7o7f")
+state = NodePath("WanderState")
+
+[node name="WanderState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("4_cphw1")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="AlienAttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("5_05spd")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+position = Vector2(1, 15)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(3, -2.5)
+shape = SubResource("RectangleShape2D_vc18j")
+
+[node name="AttackRotation" type="Node2D" parent="."]
+position = Vector2(9, -19)
+
+[node name="AttackPosition" type="Node2D" parent="AttackRotation"]
+position = Vector2(-180, -2)
+
+[node name="Firing" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(10, -8.5)
+shape = SubResource("RectangleShape2D_l4c56")
+
+[connection signal="timeout" from="Firing" to="FiniteStateMachine/AlienAttackState" method="_on_firing_timeout"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

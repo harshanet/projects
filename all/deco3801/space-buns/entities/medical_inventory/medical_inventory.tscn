@@ -1,0 +1,226 @@
+[gd_scene load_steps=22 format=3 uid="uid://blgb1pr5abw8x"]
+
+[ext_resource type="Script" path="res://entities/medical_inventory/medical_inventory.gd" id="1_l6xi0"]
+[ext_resource type="Texture2D" uid="uid://c1ge4rs3tbxn3" path="res://sci-fi_fix_task/assets/Window02.png" id="2_fnr1b"]
+[ext_resource type="Texture2D" uid="uid://6wt7vayxjfl3" path="res://entities/pickables/assets/bandage.png" id="3_5edmf"]
+[ext_resource type="Script" path="res://entities/medical_inventory/slot.gd" id="3_ml5qm"]
+[ext_resource type="Texture2D" uid="uid://b5wec835t8kov" path="res://entities/pickables/assets/ice-pack.png" id="4_1leh8"]
+[ext_resource type="PackedScene" uid="uid://gg224yi4pauc" path="res://entities/pickables/scenes/antiseptic.tscn" id="4_7ggwc"]
+[ext_resource type="PackedScene" uid="uid://dj7pffet8lyg6" path="res://entities/pickables/scenes/bandage.tscn" id="5_fbp7i"]
+[ext_resource type="Texture2D" uid="uid://bn6d8mc5rnwjt" path="res://entities/pickables/assets/Water Bottle.png" id="5_quqf4"]
+[ext_resource type="PackedScene" uid="uid://cd4xrck5pjrhr" path="res://entities/pickables/scenes/cold_water.tscn" id="6_e4hes"]
+[ext_resource type="Texture2D" uid="uid://dqkl3ffo02mkm" path="res://entities/pickables/assets/roguelikeitems.png" id="6_ly6e4"]
+[ext_resource type="PackedScene" uid="uid://yj2ajsdx74ii" path="res://entities/pickables/scenes/epinephrine_injector.tscn" id="7_esrdn"]
+[ext_resource type="Texture2D" uid="uid://b0lvgnn4ecytq" path="res://entities/pickables/assets/potion_tileset.png" id="7_ywt5g"]
+[ext_resource type="PackedScene" uid="uid://8s58m68cna01" path="res://entities/pickables/scenes/ice_pack.tscn" id="8_kwyfb"]
+[ext_resource type="Texture2D" uid="uid://djdex00aysyyu" path="res://entities/pickables/assets/zombie_icons.png" id="8_p3bkw"]
+[ext_resource type="PackedScene" uid="uid://dowywpkxk08ds" path="res://entities/pickables/scenes/inhaler.tscn" id="9_p38rg"]
+[ext_resource type="PackedScene" uid="uid://ciab0wcx7f8fc" path="res://entities/pickables/scenes/tetanus_injection.tscn" id="10_5m7kq"]
+[ext_resource type="Texture2D" uid="uid://fm5wf8xtiaj7" path="res://entities/pickables/assets/items_7.png" id="16_vilxf"]
+[ext_resource type="Texture2D" uid="uid://bigb68tmhc4ox" path="res://entities/robotic_war/assets/BtnExitOpacity.png" id="18_3jtu8"]
+[ext_resource type="Script" path="res://entities/robotic_war/Quit.gd" id="19_our6h"]
+
+[sub_resource type="SystemFont" id="SystemFont_8ggxn"]
+font_weight = 450
+font_stretch = 125
+
+[sub_resource type="LabelSettings" id="LabelSettings_rid5p"]
+line_spacing = 2.0
+font = SubResource("SystemFont_8ggxn")
+font_size = 18
+shadow_size = 3
+
+[node name="MedicalInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -168.0
+offset_top = -119.0
+offset_right = -168.0
+offset_bottom = -119.0
+script = ExtResource("1_l6xi0")
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+position = Vector2(167, 113)
+scale = Vector2(0.527704, 1.20833)
+texture = ExtResource("2_fnr1b")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 2.0
+offset_right = 313.0
+offset_bottom = 274.0
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme_override_constants/h_separation = 38
+theme_override_constants/v_separation = 28
+columns = 3
+
+[node name="Bandage" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+item = ExtResource("5_fbp7i")
+
+[node name="Bandage" type="Sprite2D" parent="GridContainer/Bandage"]
+position = Vector2(33, 36)
+scale = Vector2(1.125, 1.00781)
+texture = ExtResource("3_5edmf")
+
+[node name="Label" type="Label" parent="GridContainer/Bandage"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -29.0
+offset_right = 71.0
+offset_bottom = -1.0
+text = "Bandage"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="IcePack" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+item = ExtResource("8_kwyfb")
+
+[node name="Ice-pack" type="Sprite2D" parent="GridContainer/IcePack"]
+position = Vector2(38, 34)
+scale = Vector2(1.05469, 1.04687)
+texture = ExtResource("4_1leh8")
+
+[node name="Label" type="Label" parent="GridContainer/IcePack"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -28.0
+offset_right = 72.0
+text = "Ice Pack"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Water" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+item = ExtResource("6_e4hes")
+
+[node name="WaterBottle" type="Sprite2D" parent="GridContainer/Water"]
+position = Vector2(37, 35)
+scale = Vector2(1.88281, 2.07031)
+texture = ExtResource("5_quqf4")
+
+[node name="Label" type="Label" parent="GridContainer/Water"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -28.0
+offset_right = 62.0
+text = "Water"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Antiseptic" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+item = ExtResource("4_7ggwc")
+
+[node name="Antiseptic" type="Sprite2D" parent="GridContainer/Antiseptic"]
+light_mask = 2
+z_index = 1
+position = Vector2(36, 33)
+scale = Vector2(3.6577, 3.5)
+texture = ExtResource("6_ly6e4")
+region_enabled = true
+region_rect = Rect2(192.541, 79.5958, 14.7742, 16.802)
+
+[node name="Label" type="Label" parent="GridContainer/Antiseptic"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -32.0
+offset_right = 86.0
+offset_bottom = -4.0
+text = "Antiseptic"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Inhaler" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+item = ExtResource("9_p38rg")
+
+[node name="Inhaler" type="Sprite2D" parent="GridContainer/Inhaler"]
+light_mask = 2
+position = Vector2(35.1042, 34.067)
+scale = Vector2(5.12797, 4.39107)
+texture = ExtResource("7_ywt5g")
+region_enabled = true
+region_rect = Rect2(31.5048, 32.9407, 14.8987, 15.5247)
+
+[node name="Label" type="Label" parent="GridContainer/Inhaler"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -32.0
+offset_right = 66.0
+offset_bottom = -4.0
+text = "Inhaler"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="tetanus" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+item = ExtResource("10_5m7kq")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/tetanus"]
+light_mask = 2
+position = Vector2(38.1145, 34.9288)
+rotation = -1.74533
+scale = Vector2(0.222496, 0.266262)
+texture = ExtResource("8_p3bkw")
+region_enabled = true
+region_rect = Rect2(252.404, 267.832, 264.425, 244.163)
+
+[node name="Label" type="Label" parent="GridContainer/tetanus"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = -5.0
+text = "Tetanus"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="epi" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+item = ExtResource("7_esrdn")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/epi"]
+light_mask = 2
+position = Vector2(36, 33)
+scale = Vector2(6.31945, 4.125)
+texture = ExtResource("16_vilxf")
+region_enabled = true
+region_rect = Rect2(1, 13.4067, 9.43108, 14.5498)
+
+[node name="Label" type="Label" parent="GridContainer/epi"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -31.0
+offset_right = 66.0
+offset_bottom = -3.0
+text = "Epi pen"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Button9" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+
+[node name="Button10" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_ml5qm")
+
+[node name="Quit" type="TouchScreenButton" parent="."]
+position = Vector2(-48, -105)
+scale = Vector2(0.8, 0.781818)
+texture_normal = ExtResource("18_3jtu8")
+script = ExtResource("19_our6h")
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]

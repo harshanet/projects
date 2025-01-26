@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7x7c4ggwuknm"]
+
+[ext_resource type="Script" path="res://entities/ladder/ladder.gd" id="1_2gs6y"]
+
+[node name="Ladder" type="Node2D"]
+script = ExtResource("1_2gs6y")
+
+[node name="TopFloor" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="ClimbableArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0

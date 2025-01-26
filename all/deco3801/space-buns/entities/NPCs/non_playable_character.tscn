@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfu7d3o676a27"]
+
+[ext_resource type="Script" path="res://entities/NPCs/non_playable_character.gd" id="1_0p34d"]
+[ext_resource type="SpriteFrames" uid="uid://d0sv6jj20svj8" path="res://entities/NPCs/resources/NPC1.tres" id="2_u3u1x"]
+[ext_resource type="Script" path="res://finite_state_machine/NPCFiniteStateMachine.gd" id="3_wtgwn"]
+[ext_resource type="Script" path="res://entities/NPCs/CuredState.gd" id="4_pc4nf"]
+[ext_resource type="Script" path="res://entities/NPCs/InjuredState.gd" id="5_jd35j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvlpo"]
+size = Vector2(74, 69)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rsu5m"]
+properties/0/path = NodePath("AnimatedSprite2D:animation")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath("AnimatedSprite2D:frame")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("AnimatedSprite2D:flip_h")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath(".:position")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfq8t"]
+size = Vector2(98, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrw4k"]
+size = Vector2(43, 66)
+
+[node name="NonPlayableCharacter" type="CharacterBody2D"]
+z_index = 25
+collision_layer = 32
+collision_mask = 5
+script = ExtResource("1_0p34d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16.1, -16.876)
+scale = Vector2(1.87083, 1.88017)
+sprite_frames = ExtResource("2_u3u1x")
+animation = &"walk"
+frame_progress = 0.368572
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -6.5)
+shape = SubResource("RectangleShape2D_vvlpo")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_rsu5m")
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("3_wtgwn")
+
+[node name="CuredState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("4_pc4nf")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="NPCInjuredState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("5_jd35j")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/NPCInjuredState"]
+wait_time = 0.504
+
+[node name="TreatmentArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreatmentArea"]
+position = Vector2(9, -7.5)
+shape = SubResource("RectangleShape2D_jfq8t")
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0.5, -7)
+shape = SubResource("RectangleShape2D_wrw4k")
+
+[connection signal="timeout" from="FiniteStateMachine/NPCInjuredState/Timer" to="FiniteStateMachine/NPCInjuredState" method="_on_timer_timeout"]
+[connection signal="body_entered" from="TreatmentArea" to="FiniteStateMachine/NPCInjuredState" method="_on_treatment_area_body_entered"]
+[connection signal="body_entered" from="HitArea" to="FiniteStateMachine/CuredState" method="_on_hit_area_body_entered"]
