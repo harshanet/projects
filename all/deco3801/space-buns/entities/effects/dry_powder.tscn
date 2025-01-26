@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc0to337udpel"]
+
+[ext_resource type="Script" path="res://entities/effects/dry_powder.gd" id="1_qvlts"]
+[ext_resource type="Texture2D" uid="uid://d26m1lvqcf1pt" path="res://entities/pickables/assets/smoke1.png" id="2_8thwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_be7xf"]
+size = Vector2(229, 200)
+
+[node name="DryPowder" type="Area2D"]
+z_index = 30
+script = ExtResource("1_qvlts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -66)
+shape = SubResource("RectangleShape2D_be7xf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(10, -65)
+scale = Vector2(0.53125, 0.453125)
+texture = ExtResource("2_8thwy")
+
+[node name="Existence" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Existence" to="." method="_on_existence_timeout"]

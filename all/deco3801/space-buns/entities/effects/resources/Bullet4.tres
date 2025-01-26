@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://jexbnk0aoyni"]
+
+[ext_resource type="Texture2D" uid="uid://241yy3ejyl33" path="res://entities/assets/Sprites - Lasers Bullets #1 [66]v2.5/Laser Sprites/11.png" id="1_lfsc3"]
+[ext_resource type="Texture2D" uid="uid://b1rm5it2tmbuu" path="res://entities/assets/Sprites - Lasers Bullets #1 [66]v2.5/Laser Sprites/12.png" id="2_13qnh"]
+[ext_resource type="Texture2D" uid="uid://c0oym3e80oi5s" path="res://entities/assets/Sprites - Lasers Bullets #1 [66]v2.5/Laser Sprites/13.png" id="3_gf74q"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lfsc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_13qnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gf74q")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]

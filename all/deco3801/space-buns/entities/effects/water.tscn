@@ -1,0 +1,69 @@
+[gd_scene load_steps=15 format=3 uid="uid://bu0r6useb8rf5"]
+
+[ext_resource type="Texture2D" uid="uid://dd5i1to7f86dg" path="res://entities/assets/water_fall_01.png" id="1_i6wsb"]
+[ext_resource type="Texture2D" uid="uid://hg6ya4sfrwo2" path="res://entities/assets/water_fall_02.png" id="2_ua4qt"]
+[ext_resource type="Texture2D" uid="uid://djpxh54s6djoq" path="res://entities/assets/water_fall_03.png" id="3_u827s"]
+[ext_resource type="Texture2D" uid="uid://ddq3qlveh8n7q" path="res://entities/assets/water_fall_04.png" id="4_f0qo4"]
+[ext_resource type="Texture2D" uid="uid://coyg4qw2lymlc" path="res://entities/assets/water_fall_05.png" id="5_opk6r"]
+[ext_resource type="Texture2D" uid="uid://bglbfu0ufidcn" path="res://entities/assets/water_fall_06.png" id="6_3lxb3"]
+[ext_resource type="Texture2D" uid="uid://ra705tfx6var" path="res://entities/assets/water_fall_07.png" id="7_3ni8k"]
+[ext_resource type="Texture2D" uid="uid://brjxy3m2e2gr8" path="res://entities/assets/water_fall_08.png" id="8_gj0pf"]
+[ext_resource type="Texture2D" uid="uid://bxsfowwukttxg" path="res://entities/assets/water_fall_09.png" id="9_cius7"]
+[ext_resource type="Texture2D" uid="uid://c7tju1n8mjcxf" path="res://entities/assets/water_fall_10.png" id="10_0ug1f"]
+[ext_resource type="Texture2D" uid="uid://mem1xgxxg7kj" path="res://entities/assets/water_fall_11.png" id="11_ylkl3"]
+[ext_resource type="Texture2D" uid="uid://bnhot5an006cl" path="res://entities/assets/water_fall_12.png" id="12_evpox"]
+[ext_resource type="Script" path="res://entities/effects/water.gd" id="13_r3ob0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_de4ks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i6wsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ua4qt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u827s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f0qo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_opk6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3lxb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3ni8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gj0pf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cius7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ug1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ylkl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_evpox")
+}],
+"loop": false,
+"name": &"drop",
+"speed": 5.0
+}]
+
+[node name="Water" type="AnimatedSprite2D"]
+position = Vector2(-2.75002, -5.75003)
+scale = Vector2(0.0438889, 0.0229493)
+sprite_frames = SubResource("SpriteFrames_de4ks")
+animation = &"drop"
+frame_progress = 0.604707
+script = ExtResource("13_r3ob0")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

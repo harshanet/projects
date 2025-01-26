@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw3d137n60ro0"]
+
+[ext_resource type="Script" path="res://entities/effects/bullet.gd" id="1_jq6h0"]
+[ext_resource type="SpriteFrames" uid="uid://cpq6ckuqyrogy" path="res://entities/effects/resources/Bullet3.tres" id="2_15mgx"]
+[ext_resource type="Texture2D" uid="uid://pmsassij0oe5" path="res://assets/APfkB6p.png" id="3_qjm7s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7jmg"]
+size = Vector2(35, 13)
+
+[node name="Bullet" type="CharacterBody2D"]
+z_index = 30
+collision_layer = 512
+collision_mask = 1029
+script = ExtResource("1_jq6h0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, -2)
+scale = Vector2(0.948485, 0.670432)
+sprite_frames = ExtResource("2_15mgx")
+animation = &"fire"
+autoplay = "fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, -2.5)
+shape = SubResource("RectangleShape2D_t7jmg")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(9, -3)
+scale = Vector2(0.0383301, 0.0126953)
+texture = ExtResource("3_qjm7s")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
