@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7fq4hq4ko5mk"]
+
+[ext_resource type="PackedScene" uid="uid://8ixmbmroatkg" path="res://tasks/harvest_plants/plants.tscn" id="1_hdp3u"]
+[ext_resource type="Script" path="res://tasks/harvest_plants/harvest_plants.gd" id="1_pmvj2"]
+[ext_resource type="Texture2D" uid="uid://cevlk0eyftlob" path="res://tasks/harvest_plants/assets/shelf.png" id="2_1mc3g"]
+[ext_resource type="Resource" uid="uid://bsiuk53xvydsd" path="res://tasks/harvest_plants/harvest_plants.tres" id="2_7yq4w"]
+[ext_resource type="PackedScene" uid="uid://45sgut0y13ro" path="res://tasks/harvest_plants/veggies_fridge.tscn" id="3_8bx53"]
+[ext_resource type="PackedScene" uid="uid://35cb638he0ku" path="res://entities/pickables/scenes/water_spray_bottle.tscn" id="4_dflho"]
+[ext_resource type="PackedScene" uid="uid://d3y4nrt5l638d" path="res://entities/pickables/scenes/harvest_tool.tscn" id="5_cb1y2"]
+[ext_resource type="PackedScene" uid="uid://di1diwv0me8en" path="res://entities/pickables/scenes/seeds_bag.tscn" id="6_knwmq"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6udvx"]
+properties/0/path = NodePath(".:plants_harvested")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:seeds_planted")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath(".:seeds_sprayed")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath(".:plants_in_fridge")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+
+[node name="HarvestPlantsTask" type="Node2D"]
+script = ExtResource("1_pmvj2")
+info = ExtResource("2_7yq4w")
+
+[node name="Plants" parent="." instance=ExtResource("1_hdp3u")]
+position = Vector2(4, -48)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(107.75, -41.625)
+scale = Vector2(3.82143, 3.59783)
+texture = ExtResource("2_1mc3g")
+
+[node name="VeggiesFridge" parent="." instance=ExtResource("3_8bx53")]
+position = Vector2(165.5, -46)
+
+[node name="WaterSprayBottle" parent="." instance=ExtResource("4_dflho")]
+position = Vector2(109, -52)
+
+[node name="HarvestTool" parent="." instance=ExtResource("5_cb1y2")]
+position = Vector2(99, -9)
+
+[node name="SeedsBag" parent="." instance=ExtResource("6_knwmq")]
+position = Vector2(106, -24)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6udvx")

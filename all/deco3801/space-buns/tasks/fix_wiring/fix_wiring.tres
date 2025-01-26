@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TaskInfo" load_steps=2 format=3 uid="uid://dmyihi1trxb3a"]
+
+[ext_resource type="Script" path="res://tasks/taskinfo.gd" id="1_70w28"]
+
+[resource]
+script = ExtResource("1_70w28")
+name = "Fix Lamp Wiring"
+location = "Living Area"
+checkpoints = 5
+helptexts = PackedStringArray("Turn power switch off at the wall", "Turn the lamp switch off", "Find the good wire and replace the current faulty one", "Turn the power switch on at the wall", "Turn the lamp switch on")

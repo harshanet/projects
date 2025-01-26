@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://duopimsfqbuhb"]
+
+[ext_resource type="Script" path="res://tasks/refill_fuel/refill_fuel.gd" id="1_y6f5s"]
+[ext_resource type="Resource" uid="uid://c4vm6rcmrhnof" path="res://tasks/refill_fuel/refill_fuel_2.tres" id="2_a8rka"]
+[ext_resource type="PackedScene" uid="uid://dfnd5xmyyod4l" path="res://tasks/refill_fuel/fuel_tank.tscn" id="3_6v03q"]
+
+[node name="RefillFuelTask" type="Node2D"]
+script = ExtResource("1_y6f5s")
+info = ExtResource("2_a8rka")
+
+[node name="fuel_tank" parent="." instance=ExtResource("3_6v03q")]

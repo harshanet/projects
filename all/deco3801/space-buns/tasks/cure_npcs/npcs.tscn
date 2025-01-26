@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://xor0eseubyun"]
+
+[ext_resource type="PackedScene" uid="uid://bfu7d3o676a27" path="res://entities/NPCs/non_playable_character.tscn" id="1_alr7f"]
+[ext_resource type="Script" path="res://tasks/cure_npcs/npcs.gd" id="1_o2aq2"]
+[ext_resource type="SpriteFrames" uid="uid://d0sv6jj20svj8" path="res://entities/NPCs/resources/NPC1.tres" id="2_ng1ev"]
+[ext_resource type="Resource" uid="uid://sfxhieqm7bmj" path="res://tasks/cure_npcs/npc.tres" id="2_xel0c"]
+[ext_resource type="SpriteFrames" uid="uid://d3m4qf7xcr0nf" path="res://entities/NPCs/resources/NPC2.tres" id="3_2pghx"]
+[ext_resource type="SpriteFrames" uid="uid://dwbms57gfc3jr" path="res://entities/NPCs/resources/NPC3.tres" id="4_gxhsd"]
+[ext_resource type="SpriteFrames" uid="uid://bj4kxgbdptsee" path="res://entities/NPCs/resources/NPC4.tres" id="5_1wsyt"]
+
+[node name="NPCs" type="Node2D"]
+script = ExtResource("1_o2aq2")
+info = ExtResource("2_xel0c")
+
+[node name="NonPlayableCharacter" parent="." instance=ExtResource("1_alr7f")]
+position = Vector2(701, 458)
+animations = ExtResource("2_ng1ev")
+
+[node name="NonPlayableCharacter2" parent="." instance=ExtResource("1_alr7f")]
+position = Vector2(420, 774)
+animations = ExtResource("3_2pghx")
+injury = 1
+
+[node name="NonPlayableCharacter3" parent="." instance=ExtResource("1_alr7f")]
+position = Vector2(1197, 935)
+animations = ExtResource("4_gxhsd")
+injury = 4
+
+[node name="NonPlayableCharacter4" parent="." instance=ExtResource("1_alr7f")]
+position = Vector2(1250, 1094)
+animations = ExtResource("5_1wsyt")
+injury = 5

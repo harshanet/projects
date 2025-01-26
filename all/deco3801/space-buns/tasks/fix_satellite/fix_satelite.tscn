@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxeso5jw05q0j"]
+
+[ext_resource type="Script" path="res://tasks/fix_satellite/fix_satelite.gd" id="1_8ygoe"]
+[ext_resource type="PackedScene" uid="uid://ct76w85q1b0w" path="res://probing_satelite_task/probing_satelite.tscn" id="1_wpjdv"]
+[ext_resource type="Resource" uid="uid://cbtuvwbbxlvna" path="res://tasks/fix_satellite/satelite.tres" id="2_rgpdj"]
+
+[node name="FixSatelite" type="Node2D"]
+script = ExtResource("1_8ygoe")
+info = ExtResource("2_rgpdj")
+
+[node name="ProbingSatelite" parent="." instance=ExtResource("1_wpjdv")]
+position = Vector2(990, 1221)

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dquyvapfwweyo"]
+
+[ext_resource type="Script" path="res://tasks/harvest_plants/water_mist.gd" id="1_1pvqj"]
+[ext_resource type="Texture2D" uid="uid://du6l6esum2dau" path="res://scenes/main/assets/goo_cleanup/mist-spray-set2.png" id="2_6y6iw"]
+[ext_resource type="Texture2D" uid="uid://cpeus7dgv654" path="res://scenes/main/assets/goo_cleanup/mist-spray-set.png" id="3_aqjog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_be7xf"]
+size = Vector2(25, 95.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vx8hx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6y6iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aqjog")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WaterMist" type="Area2D"]
+z_index = 30
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_1pvqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(60.5, -27.25)
+shape = SubResource("RectangleShape2D_be7xf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(1.78125, 1.48485)
+sprite_frames = SubResource("SpriteFrames_vx8hx")
+autoplay = "default"
+offset = Vector2(16, 1)
+
+[node name="Existence" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Existence" to="." method="_on_existence_timeout"]

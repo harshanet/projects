@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://kyag40601vpq"]
+
+[ext_resource type="Script" path="res://scenes/main/insects_task.gd" id="1_80hjg"]
+[ext_resource type="PackedScene" uid="uid://77omfsyeragt" path="res://alien_insect_task/alien_insect.tscn" id="2_eeqgx"]
+[ext_resource type="Resource" uid="uid://br0u0vi3rf08r" path="res://tasks/insects/insects.tres" id="2_udul5"]
+
+[node name="Insects" type="Node2D"]
+script = ExtResource("1_80hjg")
+info = ExtResource("2_udul5")
+
+[node name="AlienInsect" parent="." instance=ExtResource("2_eeqgx")]
+position = Vector2(309, 789)
+
+[node name="AlienInsect2" parent="." instance=ExtResource("2_eeqgx")]
+position = Vector2(1028, 950)
+
+[node name="AlienInsect3" parent="." instance=ExtResource("2_eeqgx")]
+position = Vector2(1020, 791)
+
+[node name="AlienInsect6" parent="." instance=ExtResource("2_eeqgx")]
+position = Vector2(767, 1269)
+
+[node name="AlienInsect7" parent="." instance=ExtResource("2_eeqgx")]
+position = Vector2(1447, 1270)
+
+[node name="AlienInsect4" parent="." instance=ExtResource("2_eeqgx")]
+position = Vector2(1204, 629)
+
+[node name="AlienInsect5" parent="." instance=ExtResource("2_eeqgx")]
+position = Vector2(1207, 470)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://uvxygvho55pk"]
+
+[ext_resource type="Script" path="res://tasks/fix_spacesuits/mechanical_suit_fix_task.gd" id="1_eprww"]
+[ext_resource type="Resource" uid="uid://cslo6ry3qkdgi" path="res://tasks/fix_spacesuits/space_suits.tres" id="2_bx3jy"]
+[ext_resource type="PackedScene" uid="uid://cqvmndp2tkcw3" path="res://sci-fi_fix_task/machinery_suit.tscn" id="2_qcyg3"]
+
+[node name="MechanicalSuitFixTask" type="Node2D"]
+script = ExtResource("1_eprww")
+info = ExtResource("2_bx3jy")
+
+[node name="machinery_suit" parent="." instance=ExtResource("2_qcyg3")]
+position = Vector2(275, 1251)
+
+[node name="machinery_suit2" parent="." instance=ExtResource("2_qcyg3")]
+position = Vector2(345, 1251)
+broken_part = 1
+
+[node name="machinery_suit3" parent="." instance=ExtResource("2_qcyg3")]
+position = Vector2(415, 1251)
+broken_part = 4

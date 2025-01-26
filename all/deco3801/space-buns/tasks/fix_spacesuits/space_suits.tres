@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TaskInfo" load_steps=2 format=3 uid="uid://cslo6ry3qkdgi"]
+
+[ext_resource type="Script" path="res://tasks/taskinfo.gd" id="1_rfu68"]
+
+[resource]
+script = ExtResource("1_rfu68")
+name = "Fix Spacesuits"
+location = "Hangar"
+checkpoints = 3
+helptexts = PackedStringArray()

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://45sgut0y13ro"]
+
+[ext_resource type="Script" path="res://tasks/harvest_plants/veggies_fridge.gd" id="1_b2knv"]
+[ext_resource type="Texture2D" uid="uid://1cv3ps1jdq4h" path="res://tasks/harvest_plants/assets/fridge_veggies.png" id="1_qg1rv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6lvn"]
+size = Vector2(43, 75)
+
+[node name="VeggiesFridge" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_b2knv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, 9)
+scale = Vector2(0.75, 0.804348)
+texture = ExtResource("1_qg1rv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 9.5)
+shape = SubResource("RectangleShape2D_g6lvn")

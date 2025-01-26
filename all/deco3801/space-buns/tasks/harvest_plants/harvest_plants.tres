@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TaskInfo" load_steps=2 format=3 uid="uid://bsiuk53xvydsd"]
+
+[ext_resource type="Script" path="res://tasks/taskinfo.gd" id="1_i7866"]
+
+[resource]
+script = ExtResource("1_i7866")
+name = "Harvest Plants"
+location = "Greenhouse"
+checkpoints = 4
+helptexts = PackedStringArray("Pickup harvesting tools and harvest the plants", "place the harvested plants in the fridge", "Pick up the bag of seeds and re-plants the vegetables", "Pick up the water spray bottle and spray the seeds with water")

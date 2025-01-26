@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TaskInfo" load_steps=2 format=3 uid="uid://c4vm6rcmrhnof"]
+
+[ext_resource type="Script" path="res://tasks/taskinfo.gd" id="1_pkkim"]
+
+[resource]
+script = ExtResource("1_pkkim")
+name = "Refill Right Tank"
+location = "Hangar"
+checkpoints = 2
+helptexts = PackedStringArray("Collect a jerry can of fuel from the warhouse ", "Collect a jerry can of fuel from the warhouse ")

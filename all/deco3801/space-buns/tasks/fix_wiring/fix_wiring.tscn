@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://b782xxaspdudk"]
+
+[ext_resource type="Script" path="res://tasks/fix_wiring/fix_wiring.gd" id="1_d1s81"]
+[ext_resource type="Resource" uid="uid://dmyihi1trxb3a" path="res://tasks/fix_wiring/fix_wiring.tres" id="2_53qsm"]
+[ext_resource type="PackedScene" uid="uid://c1aoyf8mao7xj" path="res://tasks/fix_wiring/power_point.tscn" id="2_jwhew"]
+[ext_resource type="PackedScene" uid="uid://bwadht3tx8ag2" path="res://tasks/fix_wiring/wire.tscn" id="3_bumum"]
+[ext_resource type="PackedScene" uid="uid://c0pc7d80jxx3t" path="res://tasks/fix_wiring/electrical_machine.tscn" id="3_k5n6q"]
+[ext_resource type="Texture2D" uid="uid://ho8f3072lfxf" path="res://tasks/fix_wiring/assets/wire_extension.png" id="5_3b11n"]
+
+[node name="FixWiringTask" type="Node2D"]
+script = ExtResource("1_d1s81")
+info = ExtResource("2_53qsm")
+
+[node name="power_point" parent="." instance=ExtResource("2_jwhew")]
+position = Vector2(15, -2)
+
+[node name="wire" parent="." instance=ExtResource("3_bumum")]
+position = Vector2(5, 4)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-44.5, -2)
+scale = Vector2(0.216667, 0.125)
+texture = ExtResource("5_3b11n")
+
+[node name="electrical_machine" parent="." instance=ExtResource("3_k5n6q")]
+position = Vector2(-59, -5)

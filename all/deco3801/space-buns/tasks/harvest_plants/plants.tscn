@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://8ixmbmroatkg"]
+
+[ext_resource type="Script" path="res://tasks/harvest_plants/plants.gd" id="1_0ttdw"]
+[ext_resource type="Texture2D" uid="uid://byvxsi153elu7" path="res://tasks/harvest_plants/assets/plants_harvested.png" id="2_25cij"]
+[ext_resource type="Texture2D" uid="uid://bw1lafj7c2ghg" path="res://tasks/harvest_plants/assets/plants_grown.png" id="2_dckt1"]
+[ext_resource type="Texture2D" uid="uid://buywuhsegsmxf" path="res://tasks/harvest_plants/assets/plants_planted.png" id="3_ogyy1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h56cf"]
+size = Vector2(90, 99)
+
+[node name="Plants" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_0ttdw")
+harvested = ExtResource("2_25cij")
+planted = ExtResource("3_ogyy1")
+grown = ExtResource("2_dckt1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dckt1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_h56cf")

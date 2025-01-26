@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TaskInfo" load_steps=2 format=3 uid="uid://br0u0vi3rf08r"]
+
+[ext_resource type="Script" path="res://tasks/taskinfo.gd" id="1_mmmi6"]
+
+[resource]
+script = ExtResource("1_mmmi6")
+name = "Kill the Roaming Insects"
+location = "Ship"
+checkpoints = 7
+helptexts = PackedStringArray()

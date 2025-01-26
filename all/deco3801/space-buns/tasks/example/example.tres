@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TaskInfo" load_steps=2 format=3 uid="uid://c00aawgw5wo3b"]
+
+[ext_resource type="Script" path="res://tasks/taskinfo.gd" id="1_60y2o"]
+
+[resource]
+script = ExtResource("1_60y2o")
+name = "Example Task"
+location = ""
+checkpoints = 2
+helptexts = PackedStringArray()

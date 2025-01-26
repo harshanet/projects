@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0pc7d80jxx3t"]
+
+[ext_resource type="Script" path="res://tasks/fix_wiring/electrical_machine.gd" id="1_q7n3v"]
+[ext_resource type="Texture2D" uid="uid://br5j61ahxo765" path="res://tasks/fix_wiring/assets/lamp_off.png" id="2_nen0b"]
+[ext_resource type="Texture2D" uid="uid://b2dldc7ifm2cr" path="res://tasks/fix_wiring/assets/lamp_on.png" id="3_efahs"]
+[ext_resource type="Texture2D" uid="uid://pmsassij0oe5" path="res://assets/APfkB6p.png" id="4_jvrju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h56g7"]
+size = Vector2(33, 64)
+
+[node name="electrical_machine" type="Area2D"]
+position = Vector2(21, -6)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_q7n3v")
+machine_off = ExtResource("2_nen0b")
+machine_on = ExtResource("3_efahs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16.3103, -26.6863)
+scale = Vector2(0.337165, 0.326401)
+texture = ExtResource("3_efahs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16.5, -27)
+shape = SubResource("RectangleShape2D_h56g7")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-16, -48)
+scale = Vector2(0.616211, 0.557617)
+texture = ExtResource("4_jvrju")
+texture_scale = 0.1

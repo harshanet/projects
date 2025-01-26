@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TaskInfo" load_steps=2 format=3 uid="uid://cbtuvwbbxlvna"]
+
+[ext_resource type="Script" path="res://tasks/taskinfo.gd" id="1_0o68l"]
+
+[resource]
+script = ExtResource("1_0o68l")
+name = "Fix the Satellite"
+location = "Hangar"
+checkpoints = 4
+helptexts = PackedStringArray()
