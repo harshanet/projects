@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct76w85q1b0w"]
+
+[ext_resource type="Script" path="res://probing_satelite_task/probing_satelite.gd" id="1_y6uxn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvuyx"]
+load_path = "res://.godot/imported/wship-2.png-d6c9e7322b2e3cfcb2f72155ca4d9897.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spr1h"]
+size = Vector2(337, 132.5)
+
+[node name="ProbingSatelite" type="Area2D"]
+position = Vector2(6, 1)
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_y6uxn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, -2.99999)
+rotation = -1.5708
+scale = Vector2(0.831959, 1.02057)
+texture = SubResource("CompressedTexture2D_jvuyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, -4)
+shape = SubResource("RectangleShape2D_spr1h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

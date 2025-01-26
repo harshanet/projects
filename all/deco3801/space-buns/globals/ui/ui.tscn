@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfqljvdsdokeg"]
+
+[ext_resource type="Script" path="res://globals/ui/ui.gd" id="1_b8isu"]
+
+[node name="UILayer" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_b8isu")
+
+[node name="Padded" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+offset_right = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0

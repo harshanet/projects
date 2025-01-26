@@ -1,0 +1,288 @@
+[gd_scene load_steps=23 format=3 uid="uid://v72okfuh5lng"]
+
+[ext_resource type="Script" path="res://entities/medical_inventory/medical_inventory.gd" id="1_tkejj"]
+[ext_resource type="Texture2D" uid="uid://c1ge4rs3tbxn3" path="res://sci-fi_fix_task/assets/Window02.png" id="2_gcus6"]
+[ext_resource type="Script" path="res://entities/medical_inventory/slot.gd" id="3_m2w5a"]
+[ext_resource type="PackedScene" uid="uid://d01e53idjle0q" path="res://entities/pickables/scenes/chest.tscn" id="4_4g63l"]
+[ext_resource type="Texture2D" uid="uid://deqhyh024al6a" path="res://sci-fi_fix_task/assets/set 2.png" id="5_p42nr"]
+[ext_resource type="PackedScene" uid="uid://1ojwe5jgmtau" path="res://entities/pickables/scenes/hand.tscn" id="6_cuf3x"]
+[ext_resource type="PackedScene" uid="uid://bvnajx8s1jkp5" path="res://entities/pickables/scenes/head.tscn" id="7_a487n"]
+[ext_resource type="PackedScene" uid="uid://bmmvcucrn7n3t" path="res://entities/pickables/scenes/leg.tscn" id="8_ktaco"]
+[ext_resource type="PackedScene" uid="uid://dtqmd5uxjyu5o" path="res://entities/pickables/scenes/powerhouse.tscn" id="9_u5cvt"]
+[ext_resource type="PackedScene" uid="uid://dhwc0f3uuw27v" path="res://entities/pickables/scenes/radio.tscn" id="10_3wpsg"]
+[ext_resource type="PackedScene" uid="uid://dtlhgsnnop726" path="res://entities/pickables/scenes/reactor.tscn" id="11_urv5b"]
+[ext_resource type="Texture2D" uid="uid://bigb68tmhc4ox" path="res://entities/robotic_war/assets/BtnExitOpacity.png" id="11_yp5y6"]
+[ext_resource type="Texture2D" uid="uid://0cke7kpy6g70" path="res://probing_satelite_task/assets/B10.png" id="12_asu1f"]
+[ext_resource type="Script" path="res://entities/robotic_war/Quit.gd" id="12_gapdk"]
+[ext_resource type="PackedScene" uid="uid://bsdo40ypivsmm" path="res://entities/pickables/scenes/cooler.tscn" id="13_dpskj"]
+[ext_resource type="PackedScene" uid="uid://b36tx3ccc0n3v" path="res://entities/pickables/scenes/energy_core.tscn" id="13_hfqr4"]
+[ext_resource type="Texture2D" uid="uid://b33qpv110bteq" path="res://probing_satelite_task/assets/turret_02_mk2.png" id="14_5c8tr"]
+[ext_resource type="Texture2D" uid="uid://cgp0rqdojsko5" path="res://probing_satelite_task/assets/body_02.png" id="14_xfgje"]
+[ext_resource type="PackedScene" uid="uid://cnxiwtwj7ru3q" path="res://entities/pickables/scenes/CPU.tscn" id="17_3jiwa"]
+[ext_resource type="Texture2D" uid="uid://nuhnm80ml52l" path="res://probing_satelite_task/assets/Turret10.png" id="18_k8q55"]
+
+[sub_resource type="SystemFont" id="SystemFont_8ggxn"]
+font_weight = 450
+font_stretch = 125
+
+[sub_resource type="LabelSettings" id="LabelSettings_rid5p"]
+line_spacing = 2.0
+font = SubResource("SystemFont_8ggxn")
+font_size = 18
+shadow_size = 3
+
+[node name="MechanicalInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -168.0
+offset_top = -119.0
+offset_right = -168.0
+offset_bottom = -119.0
+script = ExtResource("1_tkejj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(267.5, 113.5)
+scale = Vector2(0.832454, 1.03274)
+texture = ExtResource("2_gcus6")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 312.0
+offset_bottom = 213.0
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme_override_constants/h_separation = 39
+theme_override_constants/v_separation = 51
+columns = 5
+
+[node name="Chest" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("4_4g63l")
+
+[node name="Label" type="Label" parent="GridContainer/Chest"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -29.0
+offset_right = 85.0
+offset_bottom = -1.0
+text = "Chest
+"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Chest"]
+position = Vector2(36, 34)
+scale = Vector2(3.72855, 3.9967)
+texture = ExtResource("5_p42nr")
+region_enabled = true
+region_rect = Rect2(31.6392, 111.901, 16.6571, 16.7901)
+
+[node name="Hand" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("6_cuf3x")
+
+[node name="Label" type="Label" parent="GridContainer/Hand"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = -29.0
+offset_right = 85.0
+offset_bottom = -1.0
+text = "Hand
+"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Hand"]
+position = Vector2(40.8246, 35.4868)
+scale = Vector2(5.85007, 4.56085)
+texture = ExtResource("5_p42nr")
+region_enabled = true
+region_rect = Rect2(34.3745, 64.5574, 11.752, 16.0028)
+
+[node name="Head" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("7_a487n")
+
+[node name="Label" type="Label" parent="GridContainer/Head"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 65.0
+text = "Head
+"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="GridContainer/Head"]
+position = Vector2(38, 31)
+scale = Vector2(5.26786, 4.29688)
+texture = ExtResource("5_p42nr")
+region_enabled = true
+region_rect = Rect2(16.3827, 79.8025, 14.8148, 16.9876)
+
+[node name="Leg" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("8_ktaco")
+
+[node name="Label" type="Label" parent="GridContainer/Leg"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -31.0
+offset_right = 109.0
+offset_bottom = -3.0
+text = "Leg
+"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D3" type="Sprite2D" parent="GridContainer/Leg"]
+position = Vector2(44, 38)
+scale = Vector2(5.5625, 4.36094)
+texture = ExtResource("5_p42nr")
+region_enabled = true
+region_rect = Rect2(66.4692, 96.494, 12.0494, 15.6049)
+
+[node name="Powerhouse" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("9_u5cvt")
+
+[node name="Label" type="Label" parent="GridContainer/Powerhouse"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -33.0
+offset_right = 72.0
+offset_bottom = -5.0
+text = "Power"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Powerhouse"]
+position = Vector2(37, 39)
+scale = Vector2(4.43391, 4.4092)
+texture = ExtResource("5_p42nr")
+region_enabled = true
+region_rect = Rect2(32.6735, 81.0062, 14.0024, 15.7527)
+
+[node name="Radio" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("10_3wpsg")
+
+[node name="Label" type="Label" parent="GridContainer/Radio"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -33.0
+offset_right = 81.0
+offset_bottom = -5.0
+text = "Radio
+"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Radio"]
+position = Vector2(36, 33)
+scale = Vector2(3.60356, 4.0592)
+texture = ExtResource("5_p42nr")
+region_enabled = true
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="Reactor" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("11_urv5b")
+
+[node name="Label" type="Label" parent="GridContainer/Reactor"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -32.0
+offset_right = 72.0
+offset_bottom = -4.0
+text = "Reactor
+"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Reactor"]
+position = Vector2(38, 36)
+scale = Vector2(0.450863, 0.434259)
+texture = ExtResource("12_asu1f")
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="Cooler" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("13_dpskj")
+
+[node name="Label" type="Label" parent="GridContainer/Cooler"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -33.0
+offset_right = 81.0
+offset_bottom = -5.0
+text = "Cooler
+
+"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Cooler"]
+position = Vector2(34, 40)
+scale = Vector2(1.4969, 1.34395)
+texture = ExtResource("14_5c8tr")
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="EnergyCore" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("13_hfqr4")
+
+[node name="Label" type="Label" parent="GridContainer/EnergyCore"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -33.0
+offset_right = 81.0
+offset_bottom = -5.0
+text = "ECore"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/EnergyCore"]
+position = Vector2(35.3491, 36.4871)
+scale = Vector2(0.770342, 0.539265)
+texture = ExtResource("14_xfgje")
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="CPU" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+script = ExtResource("3_m2w5a")
+item = ExtResource("17_3jiwa")
+
+[node name="Label" type="Label" parent="GridContainer/CPU"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -32.0
+offset_right = 90.0
+offset_bottom = -4.0
+text = "CPU"
+label_settings = SubResource("LabelSettings_rid5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/CPU"]
+position = Vector2(36, 37)
+scale = Vector2(0.934161, 0.942089)
+texture = ExtResource("18_k8q55")
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="Quit" type="TouchScreenButton" parent="."]
+position = Vector2(-64, -78)
+scale = Vector2(0.8, 0.781818)
+texture_normal = ExtResource("11_yp5y6")
+script = ExtResource("12_gapdk")
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]

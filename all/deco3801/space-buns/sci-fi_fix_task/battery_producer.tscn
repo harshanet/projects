@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg4ndda7udrmq"]
+
+[ext_resource type="Script" path="res://sci-fi_fix_task/producer.gd" id="1_qgo7c"]
+[ext_resource type="Texture2D" uid="uid://bovbptb5405ss" path="res://sci-fi_fix_task/assets/Robot-blue-silver-61.png" id="2_2hrsg"]
+[ext_resource type="PackedScene" uid="uid://bnay0glci15hf" path="res://entities/pickables/scenes/battery.tscn" id="2_tjf12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp2i"]
+size = Vector2(73, 84)
+
+[node name="battery_producer" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_qgo7c")
+device_scene = ExtResource("2_tjf12")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, -14)
+shape = SubResource("RectangleShape2D_4mp2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11.75, -12.9999)
+scale = Vector2(1.22656, 1.28125)
+texture = ExtResource("2_2hrsg")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ProducingLocation" type="Node2D" parent="."]
+position = Vector2(-42, 20)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

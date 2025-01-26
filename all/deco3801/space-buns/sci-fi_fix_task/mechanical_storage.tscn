@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl5edvjl48wue"]
+
+[ext_resource type="Script" path="res://sci-fi_fix_task/mechanical_storage.gd" id="1_5e4qe"]
+[ext_resource type="Texture2D" uid="uid://di4yc7kflqk66" path="res://sci-fi_fix_task/assets/Robot-red-yellow-65.png" id="2_4f8dj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i5ao"]
+size = Vector2(83, 86)
+
+[node name="storage" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_5e4qe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, -24)
+shape = SubResource("RectangleShape2D_1i5ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -21)
+scale = Vector2(1.26562, 1.46875)
+texture = ExtResource("2_4f8dj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

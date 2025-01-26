@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://gqbynn2xxyci"]
+
+[ext_resource type="Script" path="res://human_clone_task/chemical_producer.gd" id="1_ox582"]
+[ext_resource type="PackedScene" uid="uid://56s2bcupmsen" path="res://entities/pickables/scenes/chemical_elixir.tscn" id="2_0eqw5"]
+[ext_resource type="Texture2D" uid="uid://bsvorf5gvvj5u" path="res://sci-fi_fix_task/assets/Robot-green-black-77.png" id="2_d58sn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp2i"]
+size = Vector2(88, 94)
+
+[node name="ChemicalProducer" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ox582")
+device_scene = ExtResource("2_0eqw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, -19)
+shape = SubResource("RectangleShape2D_4mp2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14, -15)
+scale = Vector2(1.84766, 2.02344)
+texture = ExtResource("2_d58sn")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ProducingLocation" type="Node2D" parent="."]
+position = Vector2(-34, 19)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
