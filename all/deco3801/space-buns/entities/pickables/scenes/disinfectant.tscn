@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7m85s02bffub"]
+
+[ext_resource type="Texture2D" uid="uid://xgomhf8wjsyf" path="res://scenes/main/assets/goo_cleanup/sprayBottle.png" id="1_1han8"]
+[ext_resource type="Script" path="res://entities/pickables/scripts/disinfectant.gd" id="2_pbt2n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gxoh"]
+
+[node name="Disinfectant" type="Area2D" groups=["pickable"]]
+z_index = 20
+position = Vector2(0, 12)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("2_pbt2n")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2.992, -12.599)
+rotation = 1.08559
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(29.226, -54.221)
+rotation = 2.03505
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("1_1han8")
+offset = Vector2(0, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3gxoh")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(5, -2)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

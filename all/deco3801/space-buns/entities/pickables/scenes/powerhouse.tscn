@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtqmd5uxjyu5o"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/powerhouse.gd" id="1_08108"]
+[ext_resource type="Texture2D" uid="uid://deqhyh024al6a" path="res://sci-fi_fix_task/assets/set 2.png" id="2_n0gtb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qasgn"]
+size = Vector2(18, 24)
+
+[node name="powerhouse" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_08108")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_qasgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.447902, -0.0528699)
+scale = Vector2(1.58211, 1.61839)
+texture = ExtResource("2_n0gtb")
+region_enabled = true
+region_rect = Rect2(32.6735, 81.0062, 14.0024, 15.7527)
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2, 13)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(14, 0)
+rotation = 2.03505

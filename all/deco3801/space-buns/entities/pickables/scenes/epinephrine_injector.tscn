@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://yj2ajsdx74ii"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/epinephrine_injector.gd" id="1_l3im0"]
+[ext_resource type="Texture2D" uid="uid://fm5wf8xtiaj7" path="res://entities/pickables/assets/items_7.png" id="2_tmnu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqevt"]
+size = Vector2(19, 28)
+
+[node name="EpinephrineInjector" type="Area2D" groups=["pickable"]]
+z_index = 22
+position = Vector2(0, 9)
+collision_layer = 128
+collision_mask = 64
+script = ExtResource("1_l3im0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_qqevt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 3
+position = Vector2(2.84217e-14, 6)
+scale = Vector2(2.16667, 1.92857)
+texture = ExtResource("2_tmnu8")
+region_enabled = true
+region_rect = Rect2(1, 13.4067, 9.43108, 14.5498)
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(0, 20)
+rotation = 1.07687
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(29.2264, -54.2208)
+rotation = 2.03505
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

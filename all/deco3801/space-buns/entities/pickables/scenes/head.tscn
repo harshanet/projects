@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvnajx8s1jkp5"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/head.gd" id="1_ofqv4"]
+[ext_resource type="Texture2D" uid="uid://deqhyh024al6a" path="res://sci-fi_fix_task/assets/set 2.png" id="2_2tu7c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qasgn"]
+size = Vector2(17, 25)
+
+[node name="head" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_ofqv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_qasgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(2.25, 1.84375)
+texture = ExtResource("2_2tu7c")
+region_enabled = true
+region_rect = Rect2(16.3827, 79.8025, 14.8148, 16.9876)
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2, 13)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(14, 0)
+rotation = 2.03505

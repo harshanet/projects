@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://56s2bcupmsen"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/chemical_elixir.gd" id="1_damwk"]
+[ext_resource type="Texture2D" uid="uid://crysvp4cetxqw" path="res://human_clone_task/assets/19.png" id="2_k3hrp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qasgn"]
+size = Vector2(14, 23)
+
+[node name="ChemicalElixir" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_damwk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_qasgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.282094, -3.62342)
+rotation = -0.898845
+scale = Vector2(0.0532324, 0.0521636)
+texture = ExtResource("2_k3hrp")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2, 13)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(14, 0)
+rotation = 2.03505

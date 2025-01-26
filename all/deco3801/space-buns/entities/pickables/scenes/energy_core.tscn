@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b36tx3ccc0n3v"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/energy_core.gd" id="1_nwc5h"]
+[ext_resource type="Texture2D" uid="uid://cgp0rqdojsko5" path="res://probing_satelite_task/assets/body_02.png" id="2_m6vrl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qasgn"]
+size = Vector2(18, 32)
+
+[node name="EnergyCore" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_nwc5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -3)
+shape = SubResource("RectangleShape2D_qasgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.19814, -3.97414)
+scale = Vector2(0.306308, 0.250404)
+texture = ExtResource("2_m6vrl")
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2, 13)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(14, 0)
+rotation = 2.03505

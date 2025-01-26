@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb2d3xeuwykl"]
+
+[ext_resource type="Texture2D" uid="uid://bsh31wkvgcfpg" path="res://entities/pickables/assets/extinguisher.png" id="1_r0dc4"]
+[ext_resource type="Script" path="res://entities/pickables/scripts/fire_extinguisher.gd" id="2_ismme"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w86tt"]
+size = Vector2(15, 40)
+
+[node name="FireExtinguisher" type="Area2D" groups=["pickable"]]
+position = Vector2(0, 12)
+collision_layer = 128
+collision_mask = 3
+script = ExtResource("2_ismme")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(8, 0)
+scale = Vector2(1.0178, 1.26171)
+skew = 0.334518
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(43.2305, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(4, 12)
+scale = Vector2(1.35855, 0.89939)
+texture = ExtResource("1_r0dc4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 13)
+shape = SubResource("RectangleShape2D_w86tt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyshvdip6n3nf"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/jerrycan.gd" id="1_v7hxv"]
+[ext_resource type="Texture2D" uid="uid://cnbgb8i4qvdf" path="res://tasks/refill_fuel/assets/fuel_jerrycan.png" id="2_fvmdb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bj08y"]
+size = Vector2(23, 26)
+
+[node name="Jerrycan" type="Area2D" groups=["pickable"]]
+collision_layer = 136
+collision_mask = 2
+script = ExtResource("1_v7hxv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, -3)
+scale = Vector2(0.123333, 0.119231)
+texture = ExtResource("2_fvmdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, -3)
+shape = SubResource("RectangleShape2D_bj08y")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsdo40ypivsmm"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/cooler.gd" id="1_oh3fp"]
+[ext_resource type="Texture2D" uid="uid://b33qpv110bteq" path="res://probing_satelite_task/assets/turret_02_mk2.png" id="2_wdn6c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qasgn"]
+size = Vector2(15, 16)
+
+[node name="Cooler" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_oh3fp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_qasgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.549535, -0.496768)
+scale = Vector2(0.420327, 0.359476)
+texture = ExtResource("2_wdn6c")
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2, 13)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(14, 0)
+rotation = 2.03505

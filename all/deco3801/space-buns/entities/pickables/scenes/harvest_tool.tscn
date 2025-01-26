@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3y4nrt5l638d"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/harvest_tool.gd" id="1_io6dv"]
+[ext_resource type="Texture2D" uid="uid://c85opqjxm4dea" path="res://tasks/harvest_plants/assets/harvest_tool.png" id="1_y3cyh"]
+[ext_resource type="Texture2D" uid="uid://bu56v7x0qadcd" path="res://tasks/harvest_plants/assets/harvesting_basket.png" id="3_34jhq"]
+[ext_resource type="Texture2D" uid="uid://fwsapd8t6v05" path="res://tasks/harvest_plants/assets/harvest_tool2.png" id="3_ygqvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bto7a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipyd5"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_y3cyh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_ygqvv")
+}],
+"loop": true,
+"name": &"harvesting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y3cyh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="HarvestTool" type="Area2D" groups=["pickable"]]
+position = Vector2(1, 0)
+collision_layer = 136
+collision_mask = 2
+script = ExtResource("1_io6dv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_bto7a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_ipyd5")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="EffectRotation" type="Node2D" parent="."]
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+
+[node name="Basket" type="Sprite2D" parent="."]
+position = Vector2(-22, 9)
+scale = Vector2(0.6875, 0.717742)
+texture = ExtResource("3_34jhq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

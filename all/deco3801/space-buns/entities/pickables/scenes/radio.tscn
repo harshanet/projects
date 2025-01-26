@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhwc0f3uuw27v"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/radio.gd" id="1_y2b28"]
+[ext_resource type="Texture2D" uid="uid://deqhyh024al6a" path="res://sci-fi_fix_task/assets/set 2.png" id="2_a807d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qasgn"]
+size = Vector2(18, 24)
+
+[node name="radio" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_y2b28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_qasgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.447902, -0.0528699)
+scale = Vector2(1.58211, 1.61839)
+texture = ExtResource("2_a807d")
+region_enabled = true
+region_rect = Rect2(63.8796, 64.1823, 16.1278, 16.2528)
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2, 13)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(14, 0)
+rotation = 2.03505

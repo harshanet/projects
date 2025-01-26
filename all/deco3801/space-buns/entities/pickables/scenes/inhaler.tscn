@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dowywpkxk08ds"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/inhaler.gd" id="1_nq3yy"]
+[ext_resource type="Texture2D" uid="uid://b0lvgnn4ecytq" path="res://entities/pickables/assets/potion_tileset.png" id="2_sdrns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqevt"]
+size = Vector2(19, 28)
+
+[node name="Inhaler" type="Area2D" groups=["pickable"]]
+z_index = 22
+position = Vector2(1, 22)
+collision_layer = 128
+collision_mask = 66
+script = ExtResource("1_nq3yy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -6)
+shape = SubResource("RectangleShape2D_qqevt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 3
+position = Vector2(-1, -6)
+scale = Vector2(2.16667, 1.92857)
+texture = ExtResource("2_sdrns")
+region_enabled = true
+region_rect = Rect2(31.5048, 32.9407, 14.8987, 15.5247)
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2.99231, -12.5992)
+rotation = 1.07687
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(29.2264, -54.2208)
+rotation = 2.03505
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

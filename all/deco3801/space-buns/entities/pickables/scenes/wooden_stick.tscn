@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxyiqf2lomicm"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/wooden_stick.gd" id="1_m4qm2"]
+[ext_resource type="Script" path="res://entities/pickables/scenes/StaticBody2D.gd" id="2_g2qe4"]
+[ext_resource type="Texture2D" uid="uid://csdry0bb8op0n" path="res://entities/pickables/assets/32x32pixelmeleeweapon.png" id="2_hs7w4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc8ei"]
+size = Vector2(43.9919, 41.7775)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khbf7"]
+size = Vector2(40, 6.41658)
+
+[node name="Stick" type="Area2D" groups=["pickable"]]
+position = Vector2(-1, 4)
+rotation = -1.5708
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_m4qm2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_dc8ei")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(-5, 1)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(0, 22)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="EffectRotation/EffectPosition"]
+position = Vector2(1.90735e-06, -1.90735e-06)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_g2qe4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRotation/EffectPosition/StaticBody2D"]
+position = Vector2(-5, -6.20829)
+shape = SubResource("RectangleShape2D_khbf7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.656025, -0.910141)
+scale = Vector2(1.38107, 1.29083)
+texture = ExtResource("2_hs7w4")
+region_enabled = true
+region_rect = Rect2(-0.444445, 94.6296, 32.2963, 33.7778)
+
+[node name="MessagePosition" type="Node2D" parent="."]
+position = Vector2(28, 1.0001)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

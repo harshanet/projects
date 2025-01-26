@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd4xrck5pjrhr"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/cold_water.gd" id="1_eqwyp"]
+[ext_resource type="Texture2D" uid="uid://bn6d8mc5rnwjt" path="res://entities/pickables/assets/Water Bottle.png" id="2_tds7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqevt"]
+size = Vector2(18.5, 31)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pnskx"]
+properties/0/path = NodePath("../EffectRotation:rotation")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+
+[node name="ColdWater" type="Area2D" groups=["ClosetItems", "pickable"]]
+z_index = 22
+position = Vector2(0, 5)
+collision_layer = 128
+collision_mask = 66
+script = ExtResource("1_eqwyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
+shape = SubResource("RectangleShape2D_qqevt")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(2, 13)
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(14, 0)
+rotation = 2.03505
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -2)
+rotation = -0.0174533
+texture = ExtResource("2_tds7a")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Sprite2D"]
+replication_config = SubResource("SceneReplicationConfig_pnskx")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

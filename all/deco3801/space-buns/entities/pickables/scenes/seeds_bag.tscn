@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://di1diwv0me8en"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/seeds_bag.gd" id="1_dqqh6"]
+[ext_resource type="Texture2D" uid="uid://ck6fl4miloots" path="res://tasks/harvest_plants/assets/seeds_bag.png" id="2_x73lc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmqld"]
+size = Vector2(20, 18)
+
+[node name="SeedsBag" type="Area2D" groups=["pickable"]]
+collision_layer = 136
+collision_mask = 2
+script = ExtResource("1_dqqh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_hmqld")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, -7)
+scale = Vector2(0.648148, 0.603448)
+texture = ExtResource("2_x73lc")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

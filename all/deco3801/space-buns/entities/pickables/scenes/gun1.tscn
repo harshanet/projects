@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://mmjhun5hudbd"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/gun.gd" id="1_jppnc"]
+[ext_resource type="Texture2D" uid="uid://bnnkscono7d8e" path="res://entities/assets/free-guns-pack-2-for-main-characters-pixel-art/2 Guns/5_1.png" id="2_01865"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w86tt"]
+size = Vector2(36, 19)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gxplj"]
+properties/0/path = NodePath("../EffectRotation:rotation")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+
+[node name="Gun" type="Area2D" groups=["pickable"]]
+position = Vector2(4, 16)
+collision_layer = 128
+collision_mask = 3
+script = ExtResource("1_jppnc")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+position = Vector2(-11, -1)
+scale = Vector2(1, 1.24)
+skew = 0.334518
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+position = Vector2(31.6972, 0.362061)
+rotation = 2.03505
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(1, 0)
+scale = Vector2(1.17237, 0.96351)
+texture = ExtResource("2_01865")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_w86tt")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../Sprite2D")
+replication_config = SubResource("SceneReplicationConfig_gxplj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

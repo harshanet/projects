@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://35cb638he0ku"]
+
+[ext_resource type="Script" path="res://entities/pickables/scripts/water_spray_bottle.gd" id="1_erw60"]
+[ext_resource type="Texture2D" uid="uid://26d7fgmdrsch" path="res://tasks/harvest_plants/assets/water_spray.png" id="2_dxpmw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_td85j"]
+
+[node name="WaterSprayBottle" type="Area2D" groups=["pickable"]]
+collision_layer = 136
+collision_mask = 2
+script = ExtResource("1_erw60")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dxpmw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_td85j")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-32, -8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

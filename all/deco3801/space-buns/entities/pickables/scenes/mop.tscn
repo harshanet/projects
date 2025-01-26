@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwxme3wbeima"]
+
+[ext_resource type="Texture2D" uid="uid://ln8r64bhjlem" path="res://scenes/main/assets/goo_cleanup/Mop.png" id="1_2whd5"]
+[ext_resource type="Script" path="res://entities/pickables/scripts/mop.gd" id="1_t6nq5"]
+[ext_resource type="Texture2D" uid="uid://rp4hb4p3fnib" path="res://scenes/main/assets/goo_cleanup/Mop2.png" id="2_7ir1n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15b2x"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_2whd5")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_7ir1n")
+}],
+"loop": true,
+"name": &"cleaning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2whd5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrw1o"]
+size = Vector2(23, 42.5)
+
+[node name="Mop" type="Area2D" groups=["pickable"]]
+collision_layer = 136
+collision_mask = 2
+script = ExtResource("1_t6nq5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_15b2x")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_lrw1o")
+
+[node name="EffectRotation" type="Node2D" parent="."]
+
+[node name="EffectPosition" type="Node2D" parent="EffectRotation"]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
